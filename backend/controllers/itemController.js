@@ -1,4 +1,5 @@
 const Item = require('../models/itemModel')
+const mongoose = require('mongoose')
 
 // get all items
 const getItems = async (req, res) => {
@@ -10,6 +11,10 @@ const getItems = async (req, res) => {
 // get a single item
 const getItem = async (req, res) => {
     const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'Item not found'})
+    }
 
     const item = await Item.findById(id)
 
