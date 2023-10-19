@@ -44,13 +44,46 @@ const createItem = async (req, res) => {
 const deleteItem = async (req, res) => {
     const { id } = req.params
 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Item not found'})
+    }
+
+    const item = await Item.findOneAndDelete({_id: id})
+
+    if (!item) {
+        return res.status(404).json({error: 'Item not found'})
+    }
+
+    res.status(200).json(item)
+
 }
 
 // update an item
+const updateItem = async (req, res) => {
+    const { id } =req.params
 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Item not found'})
+    }
+
+    const item = await Item.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    if (!item) {
+        return res.status(404).json({error: 'Item not found'})
+    }
+
+    res.status(200).json(item)
+
+    
+    
+}
 
 module.exports = {
     getItems,
     getItem,
-    createItem
+    createItem,
+    deleteItem,
+    updateItem
 }
