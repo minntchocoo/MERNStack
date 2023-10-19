@@ -41,6 +41,10 @@ const createItem = async (req, res) => {
 }
 
 // delete an item 
+const deleteItem = async (req, res) => {
+    const { id } = req.params
+
+}
 
 // update an item
 
