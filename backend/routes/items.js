@@ -1,23 +1,23 @@
 const express = require('express')
 const{
-    createItem,
-    getItems,
-    getItem,
+    addItem,
     deleteItem,
-    updateItem
+    getAllItems,
+    getSingleItem,
+    updateItem,
 } = require('../controllers/itemController')
 
 const router = express.Router()
 
 
 // to GET all ITEMS
-router.get('/', getItems)
+router.get('/', getAllItems)
 
 // to GET a single ITEM
-router.get('/:id', getItem)
+router.get('/:id', getSingleItem)
 
 // to POST a new ITEM
-router.post('/', createItem)
+router.post('/', addItem)
 
 // to DELETE an ITEM
 router.delete('/:id', deleteItem)

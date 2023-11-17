@@ -7,16 +7,23 @@ const itemSchema = new Schema({
     name: {
         type: String,
         required: true
-    },
-    count: {
-        type: Number,
-        required: true
-
-    },
-    variation: {
+      },
+      description: {
         type: String,
         required: true
-    }
+      },
+      quantity: {
+        type: Number,
+        required: true
+      },
+      price: {
+        type: Number,
+        required: true
+      },
+      image: {
+        type: Buffer,
+        required: true
+      }
 }, {timestamps: true })
 
 module.exports = mongoose.model('Item', itemSchema)

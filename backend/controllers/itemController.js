@@ -1,89 +1,69 @@
-const Item = require('../models/itemModel')
-const mongoose = require('mongoose')
+const Item = require('../models/itemModel'); // Adjust the path based on your project structure
 
-// get all items
-const getItems = async (req, res) => {
-    const items = await Item.find({}).sort({createdAt: -1})
+// Add a new item
+const addItem = async (req, res) => {
+  try {
+    const newItem = new Item(req.body);
+    await newItem.save();
+    res.status(201).json(newItem);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-    res.status(200).json(items)
-}
-
-// get a single item
-const getItem = async (req, res) => {
-    const {id} = req.params
-
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'Item not found'})
-    }
-
-    const item = await Item.findById(id)
-
-    // an error message is shown if an item does not exist
-    if (!item) {
-        return res.status(404).json({error: 'Item not found'})
-    }
-
-    res.status(200).json(item)
-}
-
-// create a new item
-const createItem = async (req, res) => {
-    const{name, variation, count} = req.body
-    
-    // add doc to db
-    try{
-        const item = await Item.create({name, variation, count})
-        res.status(200).json(item)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-
-    }
-}
-
-// delete an item 
+// Delete an item by ID
 const deleteItem = async (req, res) => {
-    const { id } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Item not found'})
+  try {
+    const deletedItem = await Item.findByIdAndDelete(req.params.id);
+    if (!deletedItem) {
+      return res.status(404).json({ error: 'Item not found' });
     }
+    res.json({ message: 'Item deleted successfully', deletedItem });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-    const item = await Item.findOneAndDelete({_id: id})
+// Get all items
+const getAllItems = async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
+// Get a single item by ID
+const getSingleItem = async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id);
     if (!item) {
-        return res.status(404).json({error: 'Item not found'})
+      return res.status(404).json({ error: 'Item not found' });
     }
+    res.json(item);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-    res.status(200).json(item)
-
-}
-
-// update an item
+// Update an item by ID
 const updateItem = async (req, res) => {
-    const { id } =req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Item not found'})
+  try {
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedItem) {
+      return res.status(404).json({ error: 'Item not found' });
     }
-
-    const item = await Item.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
-
-    if (!item) {
-        return res.status(404).json({error: 'Item not found'})
-    }
-
-    res.status(200).json(item)
-
-    
-    
-}
+    res.json(updatedItem);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
-    getItems,
-    getItem,
-    createItem,
-    deleteItem,
-    updateItem
-}
+  addItem,
+  deleteItem,
+  getAllItems,
+  getSingleItem,
+  updateItem,
+};
