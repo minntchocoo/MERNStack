@@ -1,39 +1,48 @@
-import { useEffect, useState }from 'react'
+import { useEffect, useState } from 'react';
 
 // components
-import ItemDetails from '../components/ItemDetails'
+import ItemDetails from '../components/ItemDetails';
 
 const Home = () => {
-    const[items, setItems] = useState(null)
+    const [items, setItems] = useState(null);
 
     useEffect(() => {
-        const fetchItems = async () => {
-            const response = await fetch('/api/items')
-            const json = await response.json()
-
-            if (response.ok) {
-                setItems(json)
-
+        // Define your custom headers
+        const headers = {
+            'Content-Type': 'application/json'
+            // Add any other headers you need
+        };
+    
+        // Fetch course data from your backend API
+        fetch('http://localhost:4000/api/items', { // Fixed the URL
+            method: 'GET', // You can change the HTTP method if needed
+            headers: headers
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
-        }
-
-        fetchItems()
-
-    },  [])
-    return(
+            return response.json();
+        })
+        .then((data) => {
+            // Handle the data and update the 'items' state
+            setItems(data);
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+        });
+    }, []);
+    
+    return (
         <div className="home">
             <div className="items">
                 {items && items.map((item) => (
-                    <ItemDetails key={item._id} item={item}/>
-
+                    <ItemDetails key={item._id} item={item} />
                 ))}
-
             </div>
             <p></p>
-
         </div>
-    )
-}
+    );
+};
 
-
-export default Home
+export default Home;
