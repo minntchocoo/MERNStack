@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import '../static/home.css'
 // components
 import ItemDetails from '../components/ItemDetails';
 

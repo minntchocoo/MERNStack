@@ -19,10 +19,6 @@ const itemSchema = new Schema({
       price: {
         type: Number,
         required: true
-      },
-      image: {
-        type: Buffer,
-        required: true
       }
 }, {timestamps: true })
 
