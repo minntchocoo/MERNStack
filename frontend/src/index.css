@@ -36,3 +36,30 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
+.dgwt-wcas-sf-wrapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dgwt-wcas-sf-wrapp input[type="search"].dgwt-wcas-search-input {
+  padding: 13px 24px 13px 0;
+  line-height: 24px;
+  font-size: 17px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  height: auto;
+  font-family: Roboto, sans-serif;
+  background-color: #eee;
+}
+
+.search-icon {
+  fill: #888;
+  margin-right: 8px;
+}

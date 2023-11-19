@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 // components
-import ItemDetails from '../components/ItemDetails';
+import ItemDetails from '../components/ItemDetails'
+import ItemForm from '../components/ItemForm'
 
 const Home = () => {
     const [items, setItems] = useState(null);
@@ -40,6 +41,8 @@ const Home = () => {
                     <ItemDetails key={item._id} item={item} />
                 ))}
             </div>
+            <div> Images </div>
+            <ItemForm/>
             <p></p>
         </div>
     );

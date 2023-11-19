@@ -1,0 +1,20 @@
+.dgwt-wcas-sf-wrapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-bar-container {
+    position: relative;
+  }
+  
+  .dgwt-wcas-sf-wrapp input[type="search"].dgwt-wcas-search-input {
+    padding: 13px 24px 13px 48px;
+    line-height: 24px;
+    font-size: 17px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    height: auto;
+    font-family: Roboto, sans-serif;
+    background-color: #eee;
+  }
