@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 // components
 import ItemDetails from '../components/ItemDetails'
 import ItemForm from '../components/ItemForm'
+import SwipeableGallery from '../components/swipegallery'
+
 
 const Home = () => {
     const [items, setItems] = useState(null);
@@ -36,6 +38,8 @@ const Home = () => {
     
     return (
         <div className="home">
+            <SwipeableGallery />
+        
             <div className="items">
                 {items && items.map((item) => (
                     <ItemDetails key={item._id} item={item} />

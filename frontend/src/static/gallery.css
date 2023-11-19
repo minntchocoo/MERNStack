@@ -1,0 +1,32 @@
+.gallery-container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px;
+  }
+  
+  .gallery-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .center-image {
+    width: 600px;
+    height: 600px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .swipe-button {
+    padding: 10px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
