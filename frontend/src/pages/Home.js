@@ -2,17 +2,10 @@ import { useEffect, useState } from 'react';
 import '../static/home.css';
 // components
 import ItemDetails from '../components/ItemDetails';
-import SwipeableGallery from '../components/swipegallery';
-import SearchBar from './searchbar';
+
 
 const Home = () => {
-    const sampleImages = [
-        'https://via.placeholder.com/400x200',
-        'https://via.placeholder.com/400x200',
-        'https://via.placeholder.com/400x300',
-        // Add more sample image URLs as needed
-      ];
-      
+   
   const [items, setItems] = useState(null);
 
   useEffect(() => {
@@ -44,8 +37,6 @@ const Home = () => {
 
   return (
     <div className="home">
-        <SearchBar />
-      <SwipeableGallery images={sampleImages}/>
 
       <div className="items">
         {items && items.map((item) => (
