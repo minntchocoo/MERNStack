@@ -1,4 +1,4 @@
-.dgwt-wcas-sf-wrapp {
+ .dgwt-wcas-sf-wrapp {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,11 @@
     font-size: 17px;
     border: 2px solid transparent;
     border-radius: 30px;
-    height: auto;
+    height: 24px;
     font-family: Roboto, sans-serif;
     background-color: #eee;
   }
+  .dgwt-wcas-sf-wrap {
+    margin-bottom:10px; 
+  }
+  
