@@ -27,7 +27,7 @@ const Login = () => {
       if (data.success) {
         setLoginStatus('Login successful');
         // Redirect to home.js
-        navigate('/');
+        navigate('/home');
       } else {
         setLoginStatus('Invalid credentials');
       }

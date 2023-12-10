@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import "../static/navbar.css"
 
 
-const Navbar = () => {
+const NavbarH = () => {
   const registerBtnStyle = {
     backgroundColor:'#91a8d0',
     color: '#fff',
@@ -36,10 +36,10 @@ const Navbar = () => {
         </div>
         <div className="navbar">
           {/* Other navbar content */}
-          <Link to="/Register" style={registerBtnStyle}>
+          
+          <Link to="/Login" style={loginBtnStyle}>
             Profile
             </Link>
-          
         </div>
         <div className="dgwt-wcas-sf-wrapp">
           <label className="screen-reader-text" htmlFor="dgwt-wcas-search-input-2"></label>
@@ -74,4 +74,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar
+export default NavbarH
