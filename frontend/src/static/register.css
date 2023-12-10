@@ -1,0 +1,84 @@
+/* Reset some default styles */
+h1, h2, p, input {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the body */
+body {
+    background-color: #f4f4f4;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Center the form on the page */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style the form container */
+.login-form {
+    width: 350px;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    text-align: center;
+}
+
+.login-form label{
+    text-align: left;
+    color: #532d3b;
+
+}
+/* Style form labels */
+.appFormInputContainer label {
+    display: block;
+    margin-bottom: 8px;
+    color: #8a5b6d !important; 
+}
+
+/* Style form inputs */
+.appFormInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+/* Style the submit button */
+.appBtn {
+    background-color: #47d16e;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    
+}
+
+/* Add some hover effect to the button */
+.appBtn:hover {
+    background-color: #45a049;
+}
+
+h1#reg {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: #f7cac9;
+}
+
+.login-form p{
+    color: #808080;
+}
+
+

@@ -47,10 +47,10 @@ const SwipeableGallery = ({ images }) => {
       </div>
       <div className="button-container">
         <button onClick={handleSwipeLeft} className="swipe-button">
-          Swipe Left
+          Previous
         </button>
         <button onClick={handleSwipeRight} className="swipe-button">
-          Swipe Right
+          Next
         </button>
       </div>
     </div>
@@ -59,9 +59,9 @@ const SwipeableGallery = ({ images }) => {
 
 // Updated sample images with placeholder URLs
 const sampleImages = [
-  '/sun.jfif',
-  '/oo.jfif',
-  '/won.jfif',
+  '/nj.webp',
+  '/orangeblood.jpg',
+  '/svt.jpg',
   // Add more sample image URLs as needed
 ];
 

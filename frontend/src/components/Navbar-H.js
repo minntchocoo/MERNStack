@@ -37,11 +37,9 @@ const Navbar = () => {
         <div className="navbar">
           {/* Other navbar content */}
           <Link to="/Register" style={registerBtnStyle}>
-            Register
+            Profile
             </Link>
-          <Link to="/Login" style={loginBtnStyle}>
-            Login
-            </Link>
+          
         </div>
         <div className="dgwt-wcas-sf-wrapp">
           <label className="screen-reader-text" htmlFor="dgwt-wcas-search-input-2"></label>

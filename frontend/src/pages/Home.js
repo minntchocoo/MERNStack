@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ItemDetails from '../components/ItemDetails'
 import ItemForm from '../components/ItemForm'
 import SwipeableGallery from '../components/swipegallery'
+import Navbar from '../components/Navbar'
 
 
 const Home = () => {
@@ -37,17 +38,21 @@ const Home = () => {
     }, []);
     
     return (
-        <div className="home">
-            <SwipeableGallery />
+        <div>
+            <Navbar />
+            
+            <div className="home">
+                <SwipeableGallery />
         
-            <div className="items">
-                {items && items.map((item) => (
-                    <ItemDetails key={item._id} item={item} />
-                ))}
+                <div className="items">
+                    {items && items.map((item) => (
+                        <ItemDetails key={item._id} item={item} />
+                    ))}
+                </div>
+                <div> Images </div>
+                <ItemForm/>
+                <p></p>
             </div>
-            <div> Images </div>
-            <ItemForm/>
-            <p></p>
         </div>
     );
 };
