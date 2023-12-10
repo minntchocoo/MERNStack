@@ -1,33 +1,81 @@
-.gallery-container {
-    display: flex;
-    max-width: 1200px;
-    margin: auto;
-    gap: 30px;
-  }
-  
-  .gallery-image {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-  }
-  
-  .center-image {
-    width: 600px;
-    height: 600px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .swipe-button {
-    padding: 10px;
-    background: #47d16e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  /* gallery.css */
+  .gallery-container {
+      display: flex;
+      max-width: 100%;
+      margin: auto;
+      gap: 30px;
+    }
+    
+    .gallery-image {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .center-image {
+      width: 600px;
+      height: 600px;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    
+    .swipe-button {
+      padding: 10px;
+      background: #47d16e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+
+    /* gallery.css */
+/* ... (previous styles) */
+
+.product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  border: 2px solid gray; /* Add a border around each product container */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  overflow: hidden; /* Ensure the border doesn't overflow the container */
+  margin: 10px; /* Add margin for separation */
+}
+
+.product-info {
+  text-align: center;
+  padding: 10px;
+}
+
+.product-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.product-info p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.add-to-cart-button {
+  padding: 8px;
+  background: #47d16e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Add a smooth transition effect */
+}
+
+/* Change button background color on hover */
+.add-to-cart-button:hover {
+  background: #368956;
+}
+
+/* ... (previous styles) */

@@ -1,45 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-// COMPONENTS AND PAGES
-import Home from './pages/Home'
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import HomeUser from './pages/Home-user';
-
-
+import ProductPage from './components/productpage';
+import { CartProvider } from './components/cartContext';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-      
-
-      <div className="pages">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-           <Route
-            path="/Register"
-            element={<Register />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="/home"
-            element={<HomeUser />}
-          />
-
-
-        </Routes>
-      </div>
-      
-      
-      </BrowserRouter>
-    
+      <Router>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+          </Routes>
+        </CartProvider>
+      </Router>
     </div>
   );
 }

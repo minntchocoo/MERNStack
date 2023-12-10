@@ -5,6 +5,7 @@ import ItemDetails from '../components/ItemDetails'
 import ItemForm from '../components/ItemForm'
 import SwipeableGallery from '../components/swipegallery'
 import Navbar from '../components/Navbar'
+import Itemlist from '../components/itemlist'
 
 
 const Home = () => {
@@ -44,10 +45,10 @@ const Home = () => {
             <div className="home">
                 <SwipeableGallery />
         
-                <div className="items">
-                    {items && items.map((item) => (
-                        <ItemDetails key={item._id} item={item} />
-                    ))}
+               
+                <div>
+                    <h1>Items List</h1>
+                    <Itemlist />
                 </div>
                 <div> Images </div>
                 <ItemForm/>
