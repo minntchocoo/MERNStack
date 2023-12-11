@@ -20,11 +20,11 @@ const SwipeableGallery = ({ images }) => {
   });
 
   const handleSwipeLeft = () => {
-    handleSwipe(1);
+    handleSwipe(-1);
   };
 
   const handleSwipeRight = () => {
-    handleSwipe(-1);
+    handleSwipe(1);
   };
 
   const renderedImages = images.map((image, index) => (
@@ -33,8 +33,8 @@ const SwipeableGallery = ({ images }) => {
       src={image}
       alt={`Image ${index + 1}`}
       style={{
-        width: index === centerIndex ? '600px' : '300px', // Center image has larger width
-        height: index === centerIndex ? '600px' : '300px', // Center image has larger height
+        width: index === centerIndex ? '400px' : '300px', // Center image has larger width
+        height: index === centerIndex ? '400px' : '300px', // Center image has larger height
         objectFit: 'cover',
       }}
     />
@@ -62,6 +62,7 @@ const sampleImages = [
   '/nj.webp',
   '/orangeblood.jpg',
   '/svt.jpg',
+  '/bc.webp',
   // Add more sample image URLs as needed
 ];
 

@@ -10,6 +10,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
 
+  // Get success message from sessionStorage
+  const successMessage = sessionStorage.getItem('registrationSuccessMessage');
+  if (successMessage) {
+    setLoginStatus(successMessage);
+    // Clear the success message from sessionStorage
+    sessionStorage.removeItem('registrationSuccessMessage');
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -42,6 +50,7 @@ const Login = () => {
       <NavbarR />
       <div className="content">
         <div className="login-form">
+        
           <form onSubmit={handleLogin} className="appForm">
             <div className="appFormInputContainer">
               <label htmlFor="email">Email</label>

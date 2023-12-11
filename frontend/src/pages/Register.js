@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavbarR from '../components/Navbar-R';
 import '../static/register.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     email: '',
     password: '',
   });
+  const [registrationMessage, setRegistrationMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -22,24 +25,26 @@ const Register = () => {
     e.preventDefault();
 
     try {
-        const response = await fetch('http://localhost:4000/api/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-          
-       
+      const response = await fetch('http://localhost:4000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
-        // Handle successful registration, e.g., redirect to login page
+        // Handle successful registration, e.g., navigate to '/home'
+        setRegistrationMessage('Registration successful');
         console.log('Registration successful');
+        navigate('/login'); // Use navigate to go to '/home'
       } else {
         // Handle registration error, e.g., display an error message
+        setRegistrationMessage('Registration failed');
         console.error('Registration failed');
       }
     } catch (error) {
+      setRegistrationMessage('Error during registration');
       console.error('Error during registration:', error);
     }
   };
@@ -53,6 +58,8 @@ const Register = () => {
             <p>Please fill in the fields below: </p>
             <hr></hr>
           <form method="POST" className="appForm" onSubmit={handleSubmit}>
+          {registrationMessage && <p>{registrationMessage}</p>}
+          
             <div className="appFormInputContainer">
               <label htmlFor="first_name">First Name</label>
               <input
