@@ -23,7 +23,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:4000/api/users', {
         method: 'POST',
@@ -32,12 +32,16 @@ const Register = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
-        // Handle successful registration, e.g., navigate to '/home'
+        // Handle successful registration, e.g., navigate to '/login'
         setRegistrationMessage('Registration successful');
         console.log('Registration successful');
-        navigate('/login'); // Use navigate to go to '/home'
+  
+        // Set the success message in sessionStorage with the correct key
+        sessionStorage.setItem('registrationSuccessMessage', 'Registration successful');
+  
+        navigate('/login'); // Use navigate to go to '/login'
       } else {
         // Handle registration error, e.g., display an error message
         setRegistrationMessage('Registration failed');
@@ -48,7 +52,7 @@ const Register = () => {
       console.error('Error during registration:', error);
     }
   };
-
+  
   return (
     <div>
       <NavbarR />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import NavbarR from '../components/Navbar-R';
 import '../static/login.css';
@@ -9,14 +9,17 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
+  const [registrationStatus, setRegistrationStatus] = useState('');
 
-  // Get success message from sessionStorage
-  const successMessage = sessionStorage.getItem('registrationSuccessMessage');
-  if (successMessage) {
-    setLoginStatus(successMessage);
-    // Clear the success message from sessionStorage
-    sessionStorage.removeItem('registrationSuccessMessage');
-  }
+  useEffect(() => {
+    // Get success message from sessionStorage
+    const successMessage = sessionStorage.getItem('registrationSuccessMessage');
+    if (successMessage) {
+      setRegistrationStatus(successMessage);
+      // Clear the success message from sessionStorage
+      sessionStorage.removeItem('registrationSuccessMessage');
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ const Login = () => {
       <NavbarR />
       <div className="content">
         <div className="login-form">
-        
+          {registrationStatus && <p id='reg-status'>{registrationStatus}</p>}
           <form onSubmit={handleLogin} className="appForm">
             <div className="appFormInputContainer">
               <label htmlFor="email">Email</label>
@@ -78,6 +81,7 @@ const Login = () => {
               <i className="fa fa-plus"></i> Login
             </button>
           </form>
+        
           <p>{loginStatus}</p>
           <p>
             Don't have an account? <Link to="/register">Register</Link>
