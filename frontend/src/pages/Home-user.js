@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import ItemDetails from '../components/ItemDetails'
 import ItemForm from '../components/ItemForm'
 import SwipeableGallery from '../components/swipegallery'
-import NavbarH from '../components/Navbar-H'
+import Navbar from '../components/Navbar'
+import Itemlist from '../components/itemlist'
+import NavbarH from '../components/Navbar-H';
 
 
-const HomeUser = () => {
+const Home = () => {
     const [items, setItems] = useState(null);
 
     useEffect(() => {
@@ -44,10 +46,10 @@ const HomeUser = () => {
             <div className="home">
                 <SwipeableGallery />
         
-                <div className="items">
-                    {items && items.map((item) => (
-                        <ItemDetails key={item._id} item={item} />
-                    ))}
+               
+                <div>
+                    <h1>Items List</h1>
+                    <Itemlist />
                 </div>
                 <div> Images </div>
                 <ItemForm/>
@@ -57,4 +59,4 @@ const HomeUser = () => {
     );
 };
 
-export default HomeUser;
+export default Home;

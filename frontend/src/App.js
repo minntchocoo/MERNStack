@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ProductPage from './components/productpage';
 import { CartProvider } from './components/cartContext';
-
+import HomeUser from './pages/Home-user';
 function App() {
   return (
     <div className="App">
@@ -17,6 +17,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/home" element={<HomeUser/>}/>
           </Routes>
         </CartProvider>
       </Router>

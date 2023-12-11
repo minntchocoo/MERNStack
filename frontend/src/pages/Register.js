@@ -35,11 +35,11 @@ const Register = () => {
   
       if (response.ok) {
         // Handle successful registration, e.g., navigate to '/login'
-        setRegistrationMessage('Registration successful');
-        console.log('Registration successful');
+        setRegistrationMessage('Registration successful! Please login your Account');
+        console.log('Registration successful! Please login your Account');
   
         // Set the success message in sessionStorage with the correct key
-        sessionStorage.setItem('registrationSuccessMessage', 'Registration successful');
+        sessionStorage.setItem('registrationSuccessMessage', 'Registration successful! Please login your Account');
   
         navigate('/login'); // Use navigate to go to '/login'
       } else {
