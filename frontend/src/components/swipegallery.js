@@ -46,10 +46,10 @@ const SwipeableGallery = ({ images }) => {
         {renderedImages}
       </div>
       <div className="button-container">
-        <button onClick={handleSwipeLeft} className="swipe-button">
+        <button id='b2' onClick={handleSwipeLeft} className="swipe-button">
           Previous
         </button>
-        <button onClick={handleSwipeRight} className="swipe-button">
+        <button id='b2' onClick={handleSwipeRight} className="swipe-button">
           Next
         </button>
       </div>

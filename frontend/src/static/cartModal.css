@@ -11,10 +11,11 @@
   /* z-index places the modal on top of other elements */
   z-index: 1;
   /* Apply some styles */
-  background-color: #f1f1f1;
+  background-color: #a6c2f397;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #f7cac9;  
   width: 80%; /* Adjust the width as needed */
+  
 }
 
 /* Display the modal when opened */

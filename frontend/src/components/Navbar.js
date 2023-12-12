@@ -4,7 +4,7 @@ import "../static/navbar.css"
 
 const Navbar = () => {
   const registerBtnStyle = {
-    backgroundColor:'#91a8d0',
+    backgroundColor:'#6a994f',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',

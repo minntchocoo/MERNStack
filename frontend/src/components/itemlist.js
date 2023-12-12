@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { Link } from 'react-router-dom';
-
+import NavbarH from '../components/Navbar-H';
 import '../static/gallery.css';
 
 const Itemlist = ({ images }) => {
@@ -66,7 +66,9 @@ const Itemlist = ({ images }) => {
   const indices = Array.from({ length: 5 }, (_, i) => (centerIndex + i - 2 + images.length) % images.length);
 
   const renderedImages = indices.map((index) => (
+    
     <div key={index} className="product-container">
+      
         <Link to={{ pathname: `/product/${index + 1}`, state: { images } }}>
         <img
             src={images[index]}
@@ -82,7 +84,7 @@ const Itemlist = ({ images }) => {
       <div className="product-info">
         <h3>{products[index]?.name}</h3>
         <p>{products[index]?.price}</p>
-        <button className="add-to-cart-button">Add to Cart</button>
+        <button id='b' className="add-to-cart-button">Add to Cart</button>
       </div>
     </div>
   ));
@@ -92,10 +94,10 @@ const Itemlist = ({ images }) => {
         {renderedImages}
       </div>
       <div className="button-container">
-        <button onClick={handleSwipeLeft} className="swipe-button">
+        <button id='b2' onClick={handleSwipeLeft} className="swipe-button">
           Previous
         </button>
-        <button onClick={handleSwipeRight} className="swipe-button">
+        <button id='b2' onClick={handleSwipeRight} className="swipe-button">
           Next
         </button>
       </div>

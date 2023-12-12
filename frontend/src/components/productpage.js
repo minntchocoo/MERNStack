@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useCart } from './cartContext';
 import '../static/productpage.css';
 import CartModal from './CartModal';
+import NavbarH from '../components/Navbar-H';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -56,9 +57,13 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="p-container">
+    <div> 
+      <NavbarH/>
+      <div className="p-container">
+      
       <div className="product-container">
         <div className="product-image-container">
+        
           <img
             className="product-image"
             src={sampleImages?.[id - 1]}
@@ -74,14 +79,14 @@ const ProductPage = () => {
         </div>
       </div>
       <div className="related-products">
-        <h2>Related Products</h2>
+        <h2 id='t'>RELATED PRODUCTS</h2>
         <ul>
           {products.map((p, index) => (
             <li key={index}>
               <img src={sampleImages[index]} alt={`Product ${index + 1}`} />
               <div>
-                <p>{p.name}</p>
-                <p>{p.price}</p>
+                <p id='d'>{p.name}</p>
+                <p id='d'>{p.price}</p>
                 <a href={`/product/${index + 1}`}>View Product</a>
               </div>
             </li>
@@ -92,6 +97,10 @@ const ProductPage = () => {
       {/* Render the CartModal component conditionally */}
       {isCartModalOpen && <CartModal />}
     </div>
+    </div>
+
+    
+    
   );
 };
 
