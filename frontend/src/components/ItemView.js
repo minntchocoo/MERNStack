@@ -117,7 +117,7 @@ const ItemView = () => {
           {items.map((item) => (
             <tr className="item-list-row" key={item._id}>
               <td className="item-list-name">{item.name}</td>
-              <td className="item-list-price">{item.price}</td>
+              <td className="item-list-price">${item.price}</td>
               <td className="item-list-quantity">{item.quantity}</td>
               <td className="item-list-actions">
                 <button className="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>

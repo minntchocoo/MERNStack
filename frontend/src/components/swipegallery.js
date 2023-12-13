@@ -59,9 +59,9 @@ const SwipeableGallery = ({ images }) => {
 
 // Updated sample images with placeholder URLs
 const sampleImages = [
-  '/sun.jfif',
-  '/oo.jfif',
-  '/orangeblood.jpg',
+  '/heaven.jpg',
+  '/bc.png',
+  '/kalpa.webp',
   // Add more sample image URLs as needed
 ];
 
