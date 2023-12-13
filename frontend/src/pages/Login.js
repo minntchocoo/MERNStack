@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 import NavbarR from '../components/Navbar-R';
 import '../static/login.css';
 
@@ -35,14 +36,24 @@ const Login = () => {
   
       const data = await response.json();
   
-      if (data.success) {
-        // Store the token in localStorage
-        localStorage.setItem('userToken', data.token);
-  
-        setLoginStatus('Login successful');
-  
-        // Redirect to home.js
-        navigate('/home');
+      if (response.ok) {
+        const decodedToken = jwtDecode(data.token);
+        console.log(decodedToken);
+        if (decodedToken && decodedToken.role === 'admin') {
+          // Store the token in localStorage
+          localStorage.setItem('userToken', data.token);
+
+          setLoginStatus('Login successful');
+
+          // Redirect to the admin page or any other desired page
+          navigate('/admin');
+        } else {
+          // Handle the case where the user is not an admin
+          setLoginStatus('Login successful but not an admin');
+
+          // Redirect to a different page (e.g., home.js)
+          navigate('/home');
+        }
       } else {
         setLoginStatus('Invalid credentials');
       }
@@ -50,6 +61,7 @@ const Login = () => {
       console.error('Error during login:', error);
       setLoginStatus('An error occurred during login');
     }
+
   };
   
   return (

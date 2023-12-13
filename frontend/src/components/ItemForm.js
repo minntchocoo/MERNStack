@@ -1,68 +1,71 @@
-import {useState} from "react"
+// ItemForm.js
+import React, { useState } from 'react';
 
 const ItemForm = () => {
-    const[title, setTitle] = useState('')
-    const[stock, setStock] = useState('')
-    const[description, setDescription] = useState('')
-    const[error, setError] = useState('null')
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    image: '',
+    quantity: 0,
+    description: '',
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-        const item = {title, stock, description}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        const response = await fetch('/api/items', {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
-        const json = await response.json()
+    try {
+      const response = await fetch('http://localhost:4000/api/items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-        if (!response.ok) {
-            setError(json.error)
-        }
-        if (response.ok) {
-            setTitle('')
-            setStock('')
-            setDescription('')
-            setError(null)
-            console.log('new item added', json)
-        }
+      if (response.ok) {
+        // Item added successfully
+        // You can add a callback function to handle success or navigate to a different page
+        handleSuccessCallback(response);
+        window.location.reload();
+      } else {
+        // Handle error
+        console.error('Error creating item:', response.status);
+      }
+    } catch (error) {
+      console.error('Error creating item:', error);
     }
-    return(
-        <form className="create" onSubmit={handleSubmit}>
-            <h3> Add a New Item </h3>
+  };
+  const handleSuccessCallback = (response) => {
+    // Your success handling logic here
+    console.log('Item added successfully!');
+    // Optionally, you can navigate to a different page
+    // navigate('/success-page');
+  };
 
-            <label>Item Name:</label>
-            <input
-                type="text"
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-            />
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Name:</label>
+      <input type="text" name="name" value={formData.name} onChange={handleChange} required />
 
-            <label>Stock:</label>
-            <input
-                type="number"
-                onChange={(e) => setStock(e.target.value)}
-                value={stock}
-            />
-            <label>Description:</label>
-            <input
-                type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-            />
-            <button> Add Item </button>
-            {error && <div className="error">{error}</div>}
+      <label>Price:</label>
+      <input type="text" name="price" value={formData.price} onChange={handleChange} required />
 
-            
+      <label>Image URL:</label>
+      <input type="text" name="image" value={formData.image} onChange={handleChange} required />
 
+      <label>Quantity:</label>
+      <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} />
 
-        </form>
+      <label>Description:</label>
+      <textarea name="description" value={formData.description} onChange={handleChange}></textarea>
 
-    )
-}
+      <button type="submit">Add Item</button>
+    </form>
+  );
+};
 
-export default ItemForm
+export default ItemForm;

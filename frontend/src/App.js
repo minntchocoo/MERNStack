@@ -7,6 +7,7 @@ import ProductPage from './components/productpage'; // Corrected the component n
 import { CartProvider } from './components/cartContext';
 import ProtectedRoute from './components/privateRoute'; // Corrected the component name
 import HomeUser from './pages/Home-user';
+import AdminView from './pages/Admin';
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route
+              path="/admin"
+              element={<ProtectedRoute allowedRoles={['admin']}><AdminView /></ProtectedRoute>}
+            />
         </Routes>
 
         <CartProvider>
