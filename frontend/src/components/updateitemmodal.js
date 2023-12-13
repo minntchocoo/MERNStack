@@ -1,6 +1,7 @@
 // UpdateItemModal.js
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import '../static/admin.css';
 
 const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
   const [updatedName, setUpdatedName] = useState('');
@@ -45,48 +46,60 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
 
   return (
     <Modal
+      class="custom-modal"
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Update Item Modal"
     >
-      <h2>Update Item</h2>
-      <label htmlFor="updatedName">Name:</label>
+      <h2 class="modal-title">Update Item</h2>
+      <label htmlFor="updatedName" class="modal-label">Name:</label>
       <input
         type="text"
         id="updatedName"
+        class="modal-input"
         value={updatedName}
         onChange={(e) => setUpdatedName(e.target.value)}
       />
-      <label htmlFor="updatedPrice">Price:</label>
+      <br></br>
+      <label htmlFor="updatedPrice" class="modal-label">Price:</label>
       <input
         type="text"
         id="updatedPrice"
         value={updatedPrice}
         onChange={(e) => setUpdatedPrice(e.target.value)}
       />
-      <label htmlFor="updatedQuantity">Quantity:</label>
+    
+      <label htmlFor="updatedQuantity" class="modal-label">Quantity:</label>
       <input
         type="text"
         id="updatedQuantity"
         value={updatedQuantity}
         onChange={(e) => setUpdatedQuantity(e.target.value)}
       />
-      <label htmlFor="updatedDescription">Description:</label>
+      
+      <br></br>
+      <label htmlFor="updatedDescription" class="modal-label">Description:</label>
       <textarea
         id="updatedDescription"
         value={updatedDescription}
         onChange={(e) => setUpdatedDescription(e.target.value)}
       />
-      <label htmlFor="updatedImageUrl">Image URL:</label>
+      
+      <br></br>
+      <label htmlFor="updatedImageUrl" class="modal-label">Image URL:</label>
       <input
         type="text"
         id="updatedImageUrl"
         value={updatedImageUrl}
         onChange={(e) => setUpdatedImageUrl(e.target.value)}
       />
-      <button onClick={handleUpdate}>Update Item</button>
-      <button onClick={onClose}>Cancel</button>
+
+      
+      <br></br>
+      <button class="modal-btn" onClick={handleUpdate}>Update Item</button>
+      <button class="modal-btn" onClick={onClose}>Cancel</button>
     </Modal>
+
   );
 };
 
