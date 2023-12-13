@@ -33,10 +33,28 @@ const deleteItem = async (req, res) => {
   }
 };
 
-// Get all items
+// Archive an item by ID
+const archiveItem = async (req, res) => {
+  try {
+    const archivedItem = await Item.findByIdAndUpdate(
+      req.params.id,
+      { isArchived: true },
+      { new: true }
+    );
+
+    if (!archivedItem) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+    res.json({ message: 'Item archived successfully', archivedItem });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get all non-archived items
 const getAllItems = async (req, res) => {
   try {
-    const items = await Item.find();
+    const items = await Item.find({ isArchived: false });
     res.json(items);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -79,6 +97,7 @@ const updateItem = async (req, res) => {
 module.exports = {
   addItem,
   deleteItem,
+  archiveItem,
   getAllItems,
   getSingleItem,
   updateItem,

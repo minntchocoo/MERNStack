@@ -8,6 +8,7 @@ const cors = require('cors');
 const itemRoutes = require('./routes/items')
 const userRoutes = require('./routes/users')
 const authController = require('./controllers/authController');
+const checkoutController = require('./controllers/checkoutController');
 
 // the express app
 const app = express ()
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 app.use('/api/items', itemRoutes)
 app.use('/api/users', userRoutes)
 app.post('/api/login', authController.login);
+app.post('/api/checkout', checkoutController.processCheckout);
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI)

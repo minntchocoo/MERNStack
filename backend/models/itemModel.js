@@ -22,6 +22,9 @@ const itemSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  isArchived: { 
+    type: Boolean, default: false 
+  }, // New field for archiving
 });
 
 // Create the Item model

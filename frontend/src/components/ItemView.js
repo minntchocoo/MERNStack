@@ -1,5 +1,3 @@
-// table sa admin
-
 import React, { useState, useEffect } from 'react';
 import UpdateItemModal from './updateitemmodal';
 
@@ -52,7 +50,6 @@ const ItemView = () => {
       console.error('Error updating item:', error);
     }
   };
-  
 
   const handleDelete = async (itemId) => {
     // Implement delete logic here
@@ -70,7 +67,24 @@ const ItemView = () => {
       console.error('Error deleting item:', error);
     }
   };
-  
+
+  const handleArchive = async (itemId) => {
+    // Implement archive logic here
+    try {
+      await fetch(`http://localhost:4000/api/items/archive/${itemId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      // Remove the archived item from the displayed list
+      setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
+    } catch (error) {
+      console.error('Error archiving item:', error);
+    }
+  };
+
   const handleUpdateModalOpen = (itemId) => {
     const selectedItem = items.find((item) => item._id === itemId);
 
@@ -87,11 +101,10 @@ const ItemView = () => {
     setInitialData(null);
   };
 
-
   return (
-    <div class="item-list-container">
+    <div className="item-list-container">
       <h2>Item List</h2>
-      <table class="item-list-table">
+      <table className="item-list-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -102,15 +115,13 @@ const ItemView = () => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <tr class="item-list-row" key={item._id}>
-              <td class="item-list-name">{item.name}</td>
-              <td class="item-list-price">{item.price}</td>
-              <td class="item-list-quantity">{item.quantity}</td>
-              <td hidden>{item.image}</td>
-              <td hidden>{item.description}</td>
-              <td class="item-list-actions">
-                <button class="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
-                <button class="item-list-delete-btn" onClick={() => handleDelete(item._id)}>Delete</button>
+            <tr className="item-list-row" key={item._id}>
+              <td className="item-list-name">{item.name}</td>
+              <td className="item-list-price">{item.price}</td>
+              <td className="item-list-quantity">{item.quantity}</td>
+              <td className="item-list-actions">
+                <button className="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
+                <button className="item-list-delete-btn" onClick={() => handleArchive(item._id)}>Archive</button>
               </td>
             </tr>
           ))}
@@ -123,7 +134,6 @@ const ItemView = () => {
         initialData={initialData}
       />
     </div>
-
   );
 };
 

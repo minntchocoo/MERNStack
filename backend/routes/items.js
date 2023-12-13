@@ -1,29 +1,31 @@
-const express = require('express')
-const{
-    addItem,
-    deleteItem,
-    getAllItems,
-    getSingleItem,
-    updateItem,
-} = require('../controllers/itemController')
+const express = require('express');
+const {
+  addItem,
+  deleteItem,
+  archiveItem, // Add this import for the archiveItem function
+  getAllItems,
+  getSingleItem,
+  updateItem,
+} = require('../controllers/itemController');
 
-const router = express.Router()
+const router = express.Router();
 
+// GET all ITEMS
+router.get('/', getAllItems);
 
-// to GET all ITEMS
-router.get('/', getAllItems)
+// GET a single ITEM
+router.get('/:id', getSingleItem);
 
-// to GET a single ITEM
-router.get('/:id', getSingleItem)
+// POST a new ITEM
+router.post('/', addItem);
 
-// to POST a new ITEM
-router.post('/', addItem)
+// DELETE an ITEM
+router.delete('/:id', deleteItem);
 
-// to DELETE an ITEM
-router.delete('/:id', deleteItem)
+// Archive an ITEM (NEW)
+router.post('/archive/:id', archiveItem);
 
-// to UPDATE an ITEM
-router.patch('/:id', updateItem)
+// UPDATE an ITEM
+router.patch('/:id', updateItem);
 
-
-module.exports = router 
+module.exports = router;

@@ -14,8 +14,9 @@
   background-color: #dde6f5d0;
   padding: 20px;
   border: 1px solid #f7cac9;  
-  width: 600px; /* Adjust the width as needed */
+  width: 1000px; /* Adjust the width as needed */
   height: auto;
+  
   
 }
 
@@ -24,6 +25,9 @@
   display: block;
 }
 
+.cart-modal-content{
+  overflow-y: auto; 
+}
 /* Style the close button */
 .cart-modal-content .close {
   position: absolute;
@@ -58,3 +62,42 @@ li {
 }
 
 /* Add any additional styles based on your design */
+
+.cart-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart-item {
+  width: 150px; /* Adjust as needed based on your design */
+  margin: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.cart-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.checkout-fields {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr; /* Two columns, equal width */
+}
+
+.checkout-fields label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.checkout-fields input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
