@@ -44,12 +44,23 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
     onClose();
   };
 
+  const customStyles = {
+    content: {
+      width: '50%', // Adjust the width as needed
+      margin: 'auto', // Center the modal horizontally
+      textAlign: 'center', // Fix: Enclose property name in quotes
+    },
+  };
+
+
+
   return (
     <Modal
       class="custom-modal"
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Update Item Modal"
+      style={customStyles}
     >
       <h2 class="modal-title">Update Item</h2>
       <label htmlFor="updatedName" class="modal-label">Name:</label>
@@ -65,6 +76,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       <input
         type="text"
         id="updatedPrice"
+        class="modal-input"
         value={updatedPrice}
         onChange={(e) => setUpdatedPrice(e.target.value)}
       />
@@ -73,6 +85,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       <input
         type="text"
         id="updatedQuantity"
+        class="modal-input"
         value={updatedQuantity}
         onChange={(e) => setUpdatedQuantity(e.target.value)}
       />
@@ -81,6 +94,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       <label htmlFor="updatedDescription" class="modal-label">Description:</label>
       <textarea
         id="updatedDescription"
+        class="modal-input"
         value={updatedDescription}
         onChange={(e) => setUpdatedDescription(e.target.value)}
       />
@@ -90,6 +104,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       <input
         type="text"
         id="updatedImageUrl"
+        class="modal-input"
         value={updatedImageUrl}
         onChange={(e) => setUpdatedImageUrl(e.target.value)}
       />
