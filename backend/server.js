@@ -2,9 +2,12 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
-const itemRoutes = require('./routes/items')
-const imageRoutes = require('./routes/imageRoute')
 const cors = require('cors');
+
+// Routes
+const itemRoutes = require('./routes/items')
+const userRoutes = require('./routes/users')
+const authController = require('./controllers/authController');
 
 // the express app
 const app = express ()
@@ -14,6 +17,7 @@ app.use(cors());
 
 // middleware
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 
 app.use((req, res, next) => {
@@ -23,7 +27,8 @@ app.use((req, res, next) => {
 
 // routes 
 app.use('/api/items', itemRoutes)
-app.use('/api/image', imageRoutes)
+app.use('/api/users', userRoutes)
+app.post('/api/login', authController.login);
 
 // connect to database
 mongoose.connect(process.env.MONGO_URI)
@@ -32,5 +37,4 @@ mongoose.connect(process.env.MONGO_URI)
 app.listen(process.env.PORT, () => {
     console.log('connected to db & listening on port', process.env.PORT)
 })
-
 

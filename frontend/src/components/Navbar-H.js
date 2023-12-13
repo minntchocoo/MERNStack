@@ -1,11 +1,10 @@
-import { Link, useNavigate  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../static/navbar.css"
 
 
 const NavbarH = () => {
-  const navigate = useNavigate();
   const registerBtnStyle = {
-    backgroundColor:'#91a8d0',
+    backgroundColor:'#6a994f',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',
@@ -26,13 +25,6 @@ const NavbarH = () => {
     position:'absolute'
    
   };
-  const logout = () => {
-    // Implement your logout logic here
-    // For example, clear the user token from localStorage and navigate to the login page
-    localStorage.removeItem('userToken');
-    navigate('/login');
-  };
-
 
   
     return (
@@ -45,10 +37,9 @@ const NavbarH = () => {
         <div className="navbar">
           {/* Other navbar content */}
           
-          <button> Profile </button>
-          <button onClick={logout} style={loginBtnStyle}>
-            Logout
-         </button>
+          <Link to="/Login" style={loginBtnStyle}>
+            Profile
+            </Link>
         </div>
         <div className="dgwt-wcas-sf-wrapp">
           <label className="screen-reader-text" htmlFor="dgwt-wcas-search-input-2"></label>

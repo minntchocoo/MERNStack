@@ -5,39 +5,31 @@ const User = require('../models/userModel');
 exports.createUser = async (req, res) => {
   try {
     const { first_name, last_name, email, password, role } = req.body;
-    const missingFields = [];
 
-    // Check if required fields are provided
-    if (!first_name) missingFields.push('first_name');
-    if (!last_name) missingFields.push('last_name');
-    if (!email) missingFields.push('email');
-    if (!password) missingFields.push('password');
-
-    if (missingFields.length > 0) {
-      return res.status(400).json({ error: 'Required fields are missing', missingFields });
-    }
+    // Set default values if fields are missing
+    const userData = {
+      first_name: first_name || 'DefaultFirstName',
+      last_name: last_name || 'DefaultLastName',
+      email: email || 'default@example.com',
+      password: password || 'defaultPassword',
+      role: role || 'user',
+    };
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(userData.email)) {
       return res.status(400).json({ error: 'Invalid email format' });
     }
 
     // Validate password criteria (add your own criteria)
     const MIN_PASSWORD_LENGTH = 8;
-    if (password.length < MIN_PASSWORD_LENGTH) {
+    if (userData.password.length < MIN_PASSWORD_LENGTH) {
       return res.status(400).json({ error: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long` });
     }
 
-    const newUser = new User({
-      first_name,
-      last_name,
-      email,
-      password,
-      role: role || 'user'
-    });
-
+    const newUser = new User(userData);
     const savedUser = await newUser.save();
+    
     res.status(201).json(savedUser);
   } catch (error) {
     res.status(500).json({ error: error.message });

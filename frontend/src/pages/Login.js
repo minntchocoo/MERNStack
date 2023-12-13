@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import NavbarR from '../components/Navbar-R';
@@ -99,4 +97,3 @@ const Login = () => {
 };
 
 export default Login;
->>>>>>> Stashed changes

@@ -1,0 +1,7 @@
+/* Add this style to your existing CSS file */
+#reg-status {
+    color: #4CAF50; /* Green color for success */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  

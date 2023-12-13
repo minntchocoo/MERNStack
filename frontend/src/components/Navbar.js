@@ -36,17 +36,10 @@ const Navbar = () => {
         </div>
         <div className="navbar">
           {/* Other navbar content */}
-<<<<<<< Updated upstream
-          <Link to="/Register.js" style={registerBtnStyle}>
-            Register
-            </Link>
-          <Link to="/Login.js" style={loginBtnStyle}>
-=======
           <Link to="/register" style={registerBtnStyle}>
             Register
             </Link>
           <Link to="/login" style={loginBtnStyle}>
->>>>>>> Stashed changes
             Login
             </Link>
         </div>

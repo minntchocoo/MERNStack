@@ -24,32 +24,8 @@ const itemSchema = new mongoose.Schema({
   },
 });
 
-<<<<<<< Updated upstream
-// defines the structure you save
-const itemSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-      },
-      description: {
-        type: String,
-        required: true
-      },
-      quantity: {
-        type: Number,
-        required: true
-      },
-      price: {
-        type: Number,
-        required: true
-      }
-}, {timestamps: true })
-
-module.exports = mongoose.model('Item', itemSchema)
-=======
 // Create the Item model
 const Item = mongoose.model('Item', itemSchema);
->>>>>>> Stashed changes
 
 // Export the model
 module.exports = Item;
