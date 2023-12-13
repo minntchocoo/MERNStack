@@ -1,9 +1,18 @@
-const Item = require('../models/itemModel'); // Adjust the path based on your project structure
+const Item = require('../models/itemModel');
 
 // Add a new item
 const addItem = async (req, res) => {
   try {
-    const newItem = new Item(req.body);
+    const { name, price, image, quantity, description } = req.body;
+
+    const newItem = new Item({
+      name,
+      price,
+      image,
+      quantity,
+      description,
+    });
+
     await newItem.save();
     res.status(201).json(newItem);
   } catch (error) {
@@ -50,7 +59,14 @@ const getSingleItem = async (req, res) => {
 // Update an item by ID
 const updateItem = async (req, res) => {
   try {
-    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const { name, price, image, quantity, description } = req.body;
+
+    const updatedItem = await Item.findByIdAndUpdate(
+      req.params.id,
+      { name, price, image, quantity, description },
+      { new: true }
+    );
+
     if (!updatedItem) {
       return res.status(404).json({ error: 'Item not found' });
     }
