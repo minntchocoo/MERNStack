@@ -47,24 +47,25 @@ const ItemForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Name:</label>
-      <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+    <form class="form-container" onSubmit={handleSubmit}>
+      <label class="form-label">Name:</label>
+      <input type="text" class="form-input" name="name" value={formData.name} onChange={handleChange} required />
 
-      <label>Price:</label>
-      <input type="text" name="price" value={formData.price} onChange={handleChange} required />
+      <label class="form-label">Price:</label>
+      <input type="text" class="form-input" name="price" value={formData.price} onChange={handleChange} required />
 
-      <label>Image URL:</label>
-      <input type="text" name="image" value={formData.image} onChange={handleChange} required />
+      <label class="form-label">Image URL:</label>
+      <input type="text" class="form-input" name="image" value={formData.image} onChange={handleChange} required />
 
-      <label>Quantity:</label>
-      <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} />
+      <label class="form-label">Quantity:</label>
+      <input type="number" class="form-input" name="quantity" value={formData.quantity} onChange={handleChange} />
 
-      <label>Description:</label>
-      <textarea name="description" value={formData.description} onChange={handleChange}></textarea>
+      <label class="form-label">Description:</label>
+      <textarea class="form-textarea" name="description" value={formData.description} onChange={handleChange}></textarea>
 
-      <button type="submit">Add Item</button>
+      <button type="submit" class="form-button">Add Item</button>
     </form>
+
   );
 };
 

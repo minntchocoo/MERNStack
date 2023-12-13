@@ -1,3 +1,5 @@
+// table sa admin
+
 import React, { useState, useEffect } from 'react';
 import UpdateItemModal from './updateitemmodal';
 
@@ -87,9 +89,9 @@ const ItemView = () => {
 
 
   return (
-    <div>
+    <div class="item-list-container">
       <h2>Item List</h2>
-      <table>
+      <table class="item-list-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -100,13 +102,15 @@ const ItemView = () => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <tr key={item._id}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td>{item.quantity}</td>
-              <td>
-                <button onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
-                <button onClick={() => handleDelete(item._id)}>Delete</button>
+            <tr class="item-list-row" key={item._id}>
+              <td class="item-list-name">{item.name}</td>
+              <td class="item-list-price">{item.price}</td>
+              <td class="item-list-quantity">{item.quantity}</td>
+              <td hidden>{item.image}</td>
+              <td hidden>{item.description}</td>
+              <td class="item-list-actions">
+                <button class="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
+                <button class="item-list-delete-btn" onClick={() => handleDelete(item._id)}>Delete</button>
               </td>
             </tr>
           ))}
@@ -119,6 +123,7 @@ const ItemView = () => {
         initialData={initialData}
       />
     </div>
+
   );
 };
 

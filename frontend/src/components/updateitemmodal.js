@@ -16,7 +16,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       setUpdatedPrice(initialData.price || '');
       setUpdatedQuantity(initialData.quantity || '');
       setUpdatedDescription(initialData.description || '');
-      setUpdatedImageUrl(initialData.imageUrl || '');
+      setUpdatedImageUrl(initialData.image || '');
     }
   }, [initialData]);
 

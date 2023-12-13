@@ -1,0 +1,106 @@
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .form-button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .form-button:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Optional: Style for the form when it's in a flex container */
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  /* Optional: Add more styling for better aesthetics */
+  .item-list-container {
+    margin: 20px;
+  }
+  
+  .item-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .item-list-table th, .item-list-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    height: 80px;
+  }
+  
+  .item-list-table th {
+    background-color: #f2f2f2;
+    height: 30px;
+  }
+  
+  .item-list-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .item-list-update-btn,
+  .item-list-delete-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 35px;
+    margin-top: 20px;
+  }
+  
+  .item-list-update-btn:hover,
+  .item-list-delete-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Optional: Style for the modal */
+  /* You can add more specific styling for the modal based on your requirements */
+    
