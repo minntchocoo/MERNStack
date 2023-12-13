@@ -48,6 +48,8 @@ const Login = () => {
           // Redirect to the admin page or any other desired page
           navigate('/admin');
         } else {
+          localStorage.setItem('userToken', data.token);
+
           // Handle the case where the user is not an admin
           setLoginStatus('Login successful but not an admin');
 
