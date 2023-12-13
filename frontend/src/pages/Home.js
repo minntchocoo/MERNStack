@@ -50,7 +50,6 @@ const Home = () => {
               
          
             <div> Images </div>
-            <ItemForm/>
             <p></p>
         </div>
     );

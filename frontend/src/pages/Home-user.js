@@ -45,7 +45,11 @@ const HomeUser = () => {
             <div className="home">
                 <SwipeableGallery />
         
+<<<<<<< Updated upstream
                 <ItemList />
+=======
+                <ItemList />    
+>>>>>>> Stashed changes
                 <p></p>
             </div>
         </div>

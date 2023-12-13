@@ -4,7 +4,7 @@ import "../static/navbar.css"
 
 const Navbar = () => {
   const registerBtnStyle = {
-    backgroundColor:'#f50057',
+    backgroundColor:'#56ae57',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',
@@ -15,7 +15,7 @@ const Navbar = () => {
    
   };
   const loginBtnStyle = {
-    backgroundColor:'#de7272',
+    backgroundColor:'#532d3b',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',
@@ -31,7 +31,7 @@ const Navbar = () => {
       <header>
         <div className="container">
           <Link to="/">
-            <h1> KPOP ONLINE STORE </h1>
+            <h1 id='navbarh1'> KPOP ONLINE STORE </h1>
           </Link>
         </div>
         <div className="navbar">
@@ -65,7 +65,7 @@ const Navbar = () => {
               value=""
               placeholder=" ENHYPEN"
               autoComplete="off"
-              style={{ paddingLeft: '48px'}}
+              style={{ paddingLeft: '45px'}}
             
               
             />
