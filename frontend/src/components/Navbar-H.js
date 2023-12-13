@@ -1,21 +1,22 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import "../static/navbar.css"
 
 
-const Navbar = () => {
+const NavbarH = () => {
+  const navigate = useNavigate();
   const registerBtnStyle = {
-    backgroundColor:'#f50057',
+    backgroundColor:'#91a8d0',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',
     textDecoration: 'none',
     fontWeight: 'bold',
     right:'96px',
-    position:'absolute'
+    position:'absolute' 
    
   };
   const loginBtnStyle = {
-    backgroundColor:'#de7272',
+    backgroundColor:'#532d3b',
     color: '#fff',
     padding: '4px 20px',
     borderRadius: '4px',
@@ -25,30 +26,29 @@ const Navbar = () => {
     position:'absolute'
    
   };
+  const logout = () => {
+    // Implement your logout logic here
+    // For example, clear the user token from localStorage and navigate to the login page
+    localStorage.removeItem('userToken');
+    navigate('/login');
+  };
+
 
   
     return (
       <header>
         <div className="container">
           <Link to="/">
-            <h1> KPOP ONLINE STORE </h1>
+            <h1 id='navbarh1'> KPOP ONLINE STORE </h1>
           </Link>
         </div>
         <div className="navbar">
           {/* Other navbar content */}
-<<<<<<< Updated upstream
-          <Link to="/Register.js" style={registerBtnStyle}>
-            Register
-            </Link>
-          <Link to="/Login.js" style={loginBtnStyle}>
-=======
-          <Link to="/register" style={registerBtnStyle}>
-            Register
-            </Link>
-          <Link to="/login" style={loginBtnStyle}>
->>>>>>> Stashed changes
-            Login
-            </Link>
+          
+          <button> Profile </button>
+          <button onClick={logout} style={loginBtnStyle}>
+            Logout
+         </button>
         </div>
         <div className="dgwt-wcas-sf-wrapp">
           <label className="screen-reader-text" htmlFor="dgwt-wcas-search-input-2"></label>
@@ -83,4 +83,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar
+export default NavbarH

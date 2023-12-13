@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import '../static/home.css';
+
 // components
 import ItemDetails from '../components/ItemDetails'
 import ItemForm from '../components/ItemForm'
 import SwipeableGallery from '../components/swipegallery'
+import NavbarH from '../components/Navbar-H'
+import ItemList from '../components/itemlist';
 
 
-const Home = () => {
+const HomeUser = () => {
+    const [items, setItems] = useState(null);
+
     useEffect(() => {
         // Define your custom headers
         const headers = {
@@ -35,28 +39,18 @@ const Home = () => {
     }, []);
     
     return (
-        <div className="home">
-            <SwipeableGallery />
+        <div>
+            <NavbarH />
+            
+            <div className="home">
+                <SwipeableGallery />
         
-<<<<<<< Updated upstream
-            <div className="items">
-                {items && items.map((item) => (
-                    <ItemDetails key={item._id} item={item} />
-                ))}
-=======
-               
-                <div>
-                    <h1>Items List</h1>
-                    <Itemlist />
-                </div>
-              
->>>>>>> Stashed changes
+                <ItemList />
+                <ItemForm/>
+                <p></p>
             </div>
-            <div> Images </div>
-            <ItemForm/>
-            <p></p>
         </div>
     );
 };
 
-export default Home;
+export default HomeUser;
