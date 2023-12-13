@@ -38,7 +38,7 @@ const NavbarH = () => {
           {/* Other navbar content */}
           
           <Link to="/Login" style={loginBtnStyle}>
-            Profile
+            Logout
             </Link>
         </div>
         <div className="dgwt-wcas-sf-wrapp">
@@ -63,7 +63,7 @@ const NavbarH = () => {
               value=""
               placeholder=" ENHYPEN"
               autoComplete="off"
-              style={{ paddingLeft: '48px'}}
+              style={{ paddingLeft: '48px', marginBottom:'10px', height:'20px',}}
             
               
             />

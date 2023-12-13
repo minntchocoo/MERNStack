@@ -11,10 +11,11 @@
   /* z-index places the modal on top of other elements */
   z-index: 1;
   /* Apply some styles */
-  background-color: #a6c2f397;
+  background-color: #dde6f5d0;
   padding: 20px;
   border: 1px solid #f7cac9;  
-  width: 80%; /* Adjust the width as needed */
+  width: 600px; /* Adjust the width as needed */
+  height: auto;
   
 }
 

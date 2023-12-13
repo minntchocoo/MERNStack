@@ -35,10 +35,10 @@ const { cart, closeCartModal, isCartModalOpen, dispatch } = useCart();
               <img src={item.image} alt={item.name} />
               <div>
                 <p>{item.name}</p>
-                <p>{item.price}</p>
+                <p>${item.price}</p>
                 <p>Quantity: {item.quantity}</p> {/* Display quantity */}
               </div>
-              <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+              <button id= 'b2' onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
             </li>
           ))}
         </ul>

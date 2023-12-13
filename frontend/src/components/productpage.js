@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useCart } from './cartContext';
 import '../static/productpage.css';
 import CartModal from './CartModal';
+import NavbarH from './Navbar-H';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -44,44 +45,49 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="p-container">
-      <div className="product-container">
-        {product ? (
-          <>
-            <div className="product-image-container">
-              <img className="product-image" src={product.image} alt={product.name} />
-            </div>
-            <div className="product-info">
-              <h1>{product.name}</h1>
-              <p>{product.price}</p>
-              <button onClick={handleAddToCart}>Add to Cart</button>
-              <button onClick={openCartModal}>Open Cart</button>
-            </div>
-          </>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+    <div>
+      <NavbarH />
+      <div className="p-container">
+        <div className="product-container">
+          {product ? (
+            <>
+              <div className="product-image-container">
+                <img className="product-image" src={product.image} alt={product.name} />
+              </div>
+              <div className="product-info">
+                <h1>{product.name}</h1>
+                <p>${product.price}</p>
+                <button id='b' onClick={handleAddToCart}>Add to Cart</button>
+                <button id='b' onClick={openCartModal}>Open Cart</button>
+              </div>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+        <hr></hr>
 
-      <div className="related-products">
-        <h2>Related Products</h2>
-        <ul>
-          {relatedProducts.map((relatedProduct) => (
-            <li key={relatedProduct._id}>
-              <Link to={`/product/${relatedProduct._id}`}>
-                <img src={relatedProduct.image} alt={relatedProduct.name} />
-                <div>
-                  <p>{relatedProduct.name}</p>
-                  <p>{relatedProduct.price}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className="related-products">
+          <h2>Related Products</h2>
+          <ul>
+            {relatedProducts.map((relatedProduct) => (
+              <li key={relatedProduct._id}>
+                <Link to={`/product/${relatedProduct._id}`}>
+                  <img src={relatedProduct.image} alt={relatedProduct.name} />
+                  <div>
+                    <p id='rp'>{relatedProduct.name}</p>
+                    <p>${relatedProduct.price}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {isCartModalOpen && <CartModal />}
+        {isCartModalOpen && <CartModal />}
+      </div>
     </div>
+  
   );
 };
 

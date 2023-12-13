@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route
               path="/product/:id"
-              element={<ProtectedRoute allowedRoles={['user']}><ProductPage /></ProtectedRoute>}
+              element={<ProductPage />}
             />
             <Route
               path="/home"

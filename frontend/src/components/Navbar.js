@@ -65,7 +65,7 @@ const Navbar = () => {
               value=""
               placeholder=" ENHYPEN"
               autoComplete="off"
-              style={{ paddingLeft: '45px'}}
+              style={{ paddingLeft: '45px', marginBottom: '10px',}}
             
               
             />

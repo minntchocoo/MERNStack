@@ -4,3 +4,13 @@ h1#navbarh1 {
     color: #91a8d0;
 
 }
+
+.dgwt-wcas-sf-wrapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+.search-icon{
+    margin-bottom: 10px;
+}
