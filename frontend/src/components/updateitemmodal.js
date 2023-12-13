@@ -112,7 +112,7 @@ const UpdateItemModal = ({ isOpen, onClose, onUpdate, initialData }) => {
       
       <br></br>
       <button class="modal-btn" onClick={handleUpdate}>Update Item</button>
-      <button class="modal-btn" onClick={onClose}>Cancel</button>
+      <button id='dbutton' class="modal-btn" onClick={onClose}>Cancel</button>
     </Modal>
 
   );
