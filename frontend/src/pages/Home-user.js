@@ -46,7 +46,6 @@ const HomeUser = () => {
                 <SwipeableGallery />
         
                 <ItemList />
-                <ItemForm/>
                 <p></p>
             </div>
         </div>
