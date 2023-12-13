@@ -6,35 +6,32 @@ exports.createUser = async (req, res) => {
   try {
     const { first_name, last_name, email, password, role } = req.body;
 
-    // Set default values if fields are missing
-    const userData = {
-      first_name: first_name || 'DefaultFirstName',
-      last_name: last_name || 'DefaultLastName',
-      email: email || 'default@example.com',
-      password: password || 'defaultPassword',
-      role: role || 'user',
-    };
+    // Check if the email is already in use
+    const existingUser = await User.findOne({ email });
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(userData.email)) {
-      return res.status(400).json({ error: 'Invalid email format' });
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email already exists' });
     }
 
-    // Validate password criteria (add your own criteria)
-    const MIN_PASSWORD_LENGTH = 8;
-    if (userData.password.length < MIN_PASSWORD_LENGTH) {
-      return res.status(400).json({ error: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long` });
-    }
+    // Create a new user
+    const newUser = new User({
+      first_name,
+      last_name,
+      email,
+      password,
+      role
+    });
 
-    const newUser = new User(userData);
-    const savedUser = await newUser.save();
-    
-    res.status(201).json(savedUser);
+    // Save the user to the database
+    await newUser.save();
+
+    res.status(201).json(newUser);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 // Controller to get all users
 exports.getAllUsers = async (req, res) => {
   try {
