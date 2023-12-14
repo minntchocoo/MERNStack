@@ -24,6 +24,7 @@ header .container {
   margin: 0 auto;
   padding: 10px 20px;
   text-align: center;
+  height: 80px;
 }
 
 header a {

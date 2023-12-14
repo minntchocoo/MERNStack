@@ -3,29 +3,6 @@ import "../static/navbar.css"
 
 
 const NavbarA = () => {
-  const registerBtnStyle = {
-    backgroundColor:'#6a994f',
-    color: '#fff',
-    padding: '4px 20px',
-    borderRadius: '4px',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    right:'96px',
-    position:'absolute' 
-   
-  };
-  const loginBtnStyle = {
-    backgroundColor:'#532d3b',
-    color: '#fff',
-    padding: '4px 20px',
-    borderRadius: '4px',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    right:'8px',
-    position:'absolute'
-   
-  };
-
   
     return (
       <header>
@@ -35,12 +12,15 @@ const NavbarA = () => {
           </Link>
           <div className="navbar">
           {/* Other navbar content */}
-          
-          <Link to="/Login" style={loginBtnStyle}>
-            Logout
+          <div className='link-container'> 
+            <Link to="/admin/list">
+              View List
             </Link>
-            <br></br>
-            <br></br>
+            <Link to="/Login">
+              Logout
+            </Link>
+          </div>
+        
         </div>
         </div>
        

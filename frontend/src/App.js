@@ -8,6 +8,7 @@ import { CartProvider } from './components/cartContext';
 import ProtectedRoute from './components/privateRoute'; // Corrected the component name
 import HomeUser from './pages/Home-user';
 import AdminView from './pages/Admin';
+import AdminList from './pages/A-ItemV';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
               path="/admin"
               element={<ProtectedRoute allowedRoles={['admin']}><AdminView /></ProtectedRoute>}
             />
+          <Route
+            path="/admin/list"
+            element={<ProtectedRoute allowedRoles={['admin']}><AdminList /></ProtectedRoute>}
+          />
         </Routes>
 
         <CartProvider>
