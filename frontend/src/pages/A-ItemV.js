@@ -9,7 +9,7 @@ const AdminList = () => {
   return (
     <div>
       <NavbarA></NavbarA>
-      <h1>Admin View</h1>
+      <h1 id='e'>Add New Item</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ flex: '0 0 48%' }}>
           <ItemForm />

@@ -121,7 +121,7 @@ const ItemView = () => {
               <td className="item-list-quantity">{item.quantity}</td>
               <td className="item-list-actions">
                 <button className="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
-                <button className="item-list-delete-btn" onClick={() => handleArchive(item._id)}>Archive</button>
+                <button id='a' className="item-list-delete-btn" onClick={() => handleArchive(item._id)}>Archive</button>
               </td>
             </tr>
           ))}

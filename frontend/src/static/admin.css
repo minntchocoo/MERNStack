@@ -1,8 +1,12 @@
 h1#e{
-  color: #27ae60;
+  color: #532d3b;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   justify-content:  center ;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 8px;
 }
+
 .form-container {
     max-width: 400px;
     margin: 20px auto;
@@ -102,9 +106,15 @@ h1#e{
     margin-top: 20px;
   }
   
-  .item-list-update-btn:hover,
+  .item-list-update-btn:hover{
+    background-color: #2d80b8;
+  }
   .item-list-delete-btn:hover {
-    background-color: #2980b9;
+    background-color: rgb(170, 140, 100);
+  }
+
+  .item-list-delete-btn{
+    background-color: burlywood;
   }
   
   /* Optional: Style for the modal */
@@ -186,4 +196,8 @@ h1#e{
 .card p {
   color: #555;
   margin: 10px 0;
+}
+
+h2{
+  color: #532d3b;
 }
