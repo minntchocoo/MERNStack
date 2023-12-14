@@ -35,7 +35,7 @@ const AdminView = () => {
   return (
     <div>
       <NavbarA />
-      <h1>Menu</h1>
+      <h1 id='e'>Menu</h1>
       <div className="card">
         <h2>Item Stats</h2>
         <p>Total Items: {items.length}</p>
