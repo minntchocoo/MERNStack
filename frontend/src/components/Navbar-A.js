@@ -13,10 +13,10 @@ const NavbarA = () => {
           <div className="navbar">
           {/* Other navbar content */}
           <div className='link-container'> 
-            <Link to="/admin/list">
+            <Link id='link-container a ' to="/admin/list">
               View List
             </Link>
-            <Link to="/Login">
+            <Link id='link'to="/Login">
               Logout
             </Link>
           </div>
