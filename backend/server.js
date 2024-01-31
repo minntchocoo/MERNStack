@@ -1,8 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
-const mongoose = require('mongoose')
 const cors = require('cors');
+const { Pool } = require('pg');
 
 // Routes
 const itemRoutes = require('./routes/items')
@@ -32,11 +32,24 @@ app.use('/api/users', userRoutes)
 app.post('/api/login', authController.login);
 app.post('/api/checkout', checkoutController.processCheckout);
 
-// connect to database
-mongoose.connect(process.env.MONGO_URI)
 
-    // listen for request
-app.listen(process.env.PORT, () => {
-    console.log('connected to db & listening on port', process.env.PORT)
-})
-
+  const pool = new Pool({
+      user: 'postgres',
+      host: 'localhost',
+      database: 'yjw',
+      password: 'Tuskan32',
+      port: 5432,
+      schema: 'kpopshop',
+    });
+    
+  // Connect to the PostgreSQL database
+  pool.connect()
+    .then(() => console.log('Connected to PostgreSQL'))
+    .catch(err => console.error('Error connecting to PostgreSQL:', err));
+  
+  // Listen for requests
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log('Server is running on port', PORT);
+  });
+  

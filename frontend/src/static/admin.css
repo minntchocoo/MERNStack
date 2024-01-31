@@ -1,7 +1,7 @@
 h1#e{
   color: #27ae60;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  justify-content:  center ;
+  margin-left: 20px;
 }
 .form-container {
     max-width: 400px;
@@ -100,6 +100,14 @@ h1#e{
     cursor: pointer;
     height: 35px;
     margin-top: 20px;
+  }
+
+  .item-list-delete-btn {
+    background-color: pink !important;
+  }
+
+  .item-list-delete-btn:hover {
+    background-color: violet !important;
   }
   
   .item-list-update-btn:hover,

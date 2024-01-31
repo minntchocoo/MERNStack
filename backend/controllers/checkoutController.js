@@ -1,22 +1,35 @@
-// checkoutController.js
-const Checkout = require('../models/checkoutModel');
+const { Pool } = require('pg');
 
-// Controller function for handling checkout
+const pool = new Pool({
+  user: 'postgres',
+    host: 'localhost',
+    database: 'yjw',
+    password: 'Tuskan32',
+    port: 5432,
+});
+
+
 exports.processCheckout = async (req, res) => {
-  const checkoutData = req.body; // Assuming you're sending data in the request body
+  const checkoutData = req.body;
 
   try {
-    // Save the checkout data to the database
-    const newCheckout = new Checkout(checkoutData);
-    await newCheckout.save();
+    const { payment_type, address, name, date, cart_items } = checkoutData;
 
-    // Optionally, perform additional actions here
+    const query = `
+      INSERT INTO checkouts (payment_type, address, name, date, cart_items)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING *;
+    `;
 
-    // Send a success response
+    const values = [payment_type, address, name, date, cart_items];
+
+    const result = await pool.query(query, values);
+
+    const newCheckout = result.rows[0];
+
     res.status(200).json({ message: 'Checkout successful', data: newCheckout });
   } catch (error) {
     console.error('Error during checkout:', error);
-    // Send an error response
     res.status(500).json({ message: 'Internal server error', error });
   }
 };

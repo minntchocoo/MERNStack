@@ -59,7 +59,7 @@ const ItemView = () => {
       });
 
       if (deleteResponse.ok) {
-        setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
+        setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
       } else {
         console.error('Error deleting item:', deleteResponse.status);
       }
@@ -115,7 +115,7 @@ const ItemView = () => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <tr className="item-list-row" key={item._id}>
+            <tr className="item-list-row" key={item.id}>
               <td className="item-list-name">{item.name}</td>
               <td className="item-list-price">${item.price}</td>
               <td className="item-list-quantity">{item.quantity}</td>

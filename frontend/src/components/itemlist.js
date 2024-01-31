@@ -39,7 +39,7 @@ const ItemList = () => {
         <Slider {...sliderSettings}>
           {items.map((item) => (
             <div key={item._id} className="item">
-              <Link to={`/product/${item._id}`}>
+              <Link to={`/product/${item. id}`}>
                 <h3 id='n'>{item.name}</h3>
                 <p id='pr'>Price: ${item.price}</p>
                 <img src={item.image} alt={item.name} className="item-image" />

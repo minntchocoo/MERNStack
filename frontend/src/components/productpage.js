@@ -35,7 +35,7 @@ const ProductPage = () => {
       dispatch({
         type: 'ADD_TO_CART',
         payload: {
-          id: product._id,
+          id: product.id,
           name: product.name,
           price: product.price,
           image: product.image,
@@ -71,8 +71,8 @@ const ProductPage = () => {
           <h2>Related Products</h2>
           <ul>
             {relatedProducts.map((relatedProduct) => (
-              <li key={relatedProduct._id}>
-                <Link to={`/product/${relatedProduct._id}`}>
+              <li key={relatedProduct.id}>
+                <Link to={`/product/${relatedProduct.id}`}>
                   <img src={relatedProduct.image} alt={relatedProduct.name} />
                   <div>
                     <p id='rp'>{relatedProduct.name}</p>

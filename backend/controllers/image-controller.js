@@ -1,39 +1,57 @@
-const Image = require('../models/imageModel'); // Import the Mongoose Image model
+const { Pool } = require('pg');
+const fs = require('fs');
+const path = require('path');
 
-// Function to upload and save an image to the database
+const pool = new Pool({
+  user: 'postgres',
+    host: 'localhost',
+    database: 'yjw',
+    password: 'Tuskan32',
+    port: 5432,
+});
+
+
 const uploadImage = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded.' });
     }
 
-    const image = new Image({
-      name: req.body.name, // Get the image name from the request body
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    });
+    const { originalname, mimetype, buffer } = req.file;
 
-    await image.save();
+    const fileExtension = originalname.split('.').pop();
+    const fileName = `${Date.now()}.${fileExtension}`;
+    const filePath = path.join(__dirname, '..', 'uploads', fileName); // Adjust the folder path as needed
 
-    return res.status(201).json({ message: 'Image saved successfully.' });
+    fs.writeFileSync(filePath, buffer);
+
+    const query = 'INSERT INTO images (name, file_path, content_type) VALUES ($1, $2, $3) RETURNING *';
+    const values = [originalname, filePath, mimetype];
+
+    const result = await pool.query(query, values);
+
+    return res.status(201).json({ message: 'Image saved successfully.', image: result.rows[0] });
   } catch (error) {
     console.error('Error saving image:', error);
     return res.status(500).json({ message: 'Error saving the image.' });
   }
 };
 
-
-// Function to retrieve an image from the database by its ID
 const getImage = async (req, res) => {
   try {
-    const image = await Image.findById(req.params.id);
+    const imageId = req.params.id;
+
+    const query = 'SELECT * FROM images WHERE id = $1';
+    const values = [imageId];
+
+    const result = await pool.query(query, values);
+    const image = result.rows[0];
 
     if (!image) {
       return res.status(404).json({ message: 'Image not found.' });
     }
 
-    res.setHeader('Content-Type', image.contentType);
-    res.send(image.data);
+    res.sendFile(image.file_path);
   } catch (error) {
     console.error('Error fetching image:', error);
     return res.status(500).json({ message: 'Error fetching the image.' });
@@ -42,26 +60,15 @@ const getImage = async (req, res) => {
 
 const getAllImages = async (req, res) => {
   try {
-    const images = await Image.find();
+    const query = 'SELECT * FROM images';
+    const result = await pool.query(query);
+    const images = result.rows;
 
     if (!images || images.length === 0) {
       return res.status(404).json({ message: 'No images found.' });
     }
 
-    // Create an array to store image data as data URLs
-    const imageArray = [];
-    for (const image of images) {
-      // Convert Buffer to base64 string
-      const base64Image = image.data.toString('base64');
-      // Create a data URL for the image
-      const dataURL = `data:${image.contentType};base64,${base64Image}`;
-      imageArray.push({
-        contentType: image.contentType,
-        data: dataURL,
-      });
-    }
-
-    return res.status(200).json(imageArray);
+    return res.status(200).json(images);
   } catch (error) {
     console.error('Error fetching images:', error);
     return res.status(500).json({ message: 'Error fetching images.' });
@@ -72,22 +79,22 @@ const getImageByName = async (req, res) => {
   try {
     const imageName = req.params.name;
 
-    const image = await Image.findOne({ name: imageName });
+    const query = 'SELECT * FROM images WHERE name = $1';
+    const values = [imageName];
+
+    const result = await pool.query(query, values);
+    const image = result.rows[0];
 
     if (!image) {
       return res.status(404).json({ message: 'Image not found.' });
     }
 
-    res.setHeader('Content-Type', image.contentType);
-    res.send(image.data);
+    res.sendFile(image.file_path);
   } catch (error) {
     console.error('Error fetching image:', error);
     return res.status(500).json({ message: 'Error fetching the image.' });
   }
 };
-
-
-
 
 module.exports = {
   uploadImage,
