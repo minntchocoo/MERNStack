@@ -7,11 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
+    username: '',
     email: '',
     password: '',
-    role: 'user',
+    role: '1',
   });
   const [registrationMessage, setRegistrationMessage] = useState('');
 
@@ -66,25 +65,16 @@ const Register = () => {
           {registrationMessage && <p>{registrationMessage}</p>}
           
             <div className="appFormInputContainer">
-              <label htmlFor="first_name">First Name</label>
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
                 className="appFormInput"
-                id="first_name"
-                name="first_name"
+                id="username"
+                name="username"
                 onChange={handleChange}
               />
             </div>
-            <div className="appFormInputContainer">
-              <label htmlFor="last_name">Last Name</label>
-              <input
-                type="text"
-                className="appFormInput"
-                id="last_name"
-                name="last_name"
-                onChange={handleChange}
-              />
-            </div>
+
             <div className="appFormInputContainer">
               <label htmlFor="email">Email</label>
               <input

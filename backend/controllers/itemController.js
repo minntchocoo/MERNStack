@@ -1,12 +1,6 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({
-  user: 'postgres',
-    host: 'localhost',
-    database: 'yjw',
-    password: 'Tuskan32',
-    port: 5432,
-});
+const pool = require('../db');
 
 // Add a new item
     const addItem = async (req, res) => {

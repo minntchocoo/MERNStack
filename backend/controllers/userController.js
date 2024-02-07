@@ -1,20 +1,14 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({
-  user: 'postgres',
-    host: 'localhost',
-    database: 'yjw',
-    password: 'Tuskan32',
-    port: 5432,
-});
+const pool = require('../db');
 
 // Controller to handle user creation
 exports.createUser = async (req, res) => {
   try {
-    const { first_name, last_name, email, password, role } = req.body;
+    const {username, email, password, role } = req.body;
 
     // Check if the email is already in use
-    const existingUserQuery = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    const existingUserQuery = await pool.query('SELECT * FROM store."User" WHERE email = $1', [email]);
 
     if (existingUserQuery.rows.length > 0) {
       return res.status(400).json({ error: 'Email already exists' });
@@ -22,8 +16,8 @@ exports.createUser = async (req, res) => {
 
     // Create a new user
     const newUserQuery = await pool.query(
-      'INSERT INTO users (first_name, last_name, email, password, role) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [first_name, last_name, email, password, role]
+      'INSERT INTO store."User" (username, email, password, role) VALUES ($1, $2, $3, $4) RETURNING *',
+      [username, email, password, role]
     );
 
     const newUser = newUserQuery.rows[0];
@@ -38,7 +32,7 @@ exports.createUser = async (req, res) => {
 // Controller to get all users
 exports.getAllUsers = async (req, res) => {
   try {
-    const usersQuery = await pool.query('SELECT * FROM users');
+    const usersQuery = await pool.query('SELECT * FROM store."User"');
     const users = usersQuery.rows;
     res.status(200).json(users);
   } catch (error) {
@@ -50,7 +44,7 @@ exports.getAllUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const userQuery = await pool.query('SELECT * FROM users WHERE id = $1', [userId]);
+    const userQuery = await pool.query('SELECT * FROM store."User" WHERE id = $1', [userId]);
     const user = userQuery.rows[0];
 
     if (!user) {
@@ -68,10 +62,9 @@ exports.updateUserById = async (req, res) => {
   try {
     const userId = req.params.userId;
     const updatedUserQuery = await pool.query(
-      'UPDATE users SET first_name = $1, last_name = $2, email = $3, password = $4, role = $5 WHERE id = $6 RETURNING *',
+      'UPDATE store."User" SET username = $1, email = $2, password = $3, role = $4 WHERE id = $5 RETURNING *',
       [
-        req.body.first_name,
-        req.body.last_name,
+        req.body.username,
         req.body.email,
         req.body.password,
         req.body.role,
@@ -95,7 +88,7 @@ exports.updateUserById = async (req, res) => {
 exports.deleteUserById = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const deletedUserQuery = await pool.query('DELETE FROM users WHERE id = $1 RETURNING *', [userId]);
+    const deletedUserQuery = await pool.query('DELETE FROM store."User" WHERE id = $1 RETURNING *', [userId]);
     const deletedUser = deletedUserQuery.rows[0];
 
     if (!deletedUser) {

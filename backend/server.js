@@ -36,10 +36,10 @@ app.post('/api/checkout', checkoutController.processCheckout);
   const pool = new Pool({
       user: 'postgres',
       host: 'localhost',
-      database: 'yjw',
-      password: 'Tuskan32',
+      database: 'kpop',
+      password: '1234',
       port: 5432,
-      schema: 'kpopshop',
+      schema: 'store',
     });
     
   // Connect to the PostgreSQL database

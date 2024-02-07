@@ -1,13 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { Pool } = require('pg');
 
-const pool = new Pool({
-  user: 'postgres',
-    host: 'localhost',
-    database: 'yjw',
-    password: 'Tuskan32',
-    port: 5432,
-});
+const pool = require('../db');
 
 const secretKey = 'yourSecretKey'; // Replace with a strong, secret key
 
