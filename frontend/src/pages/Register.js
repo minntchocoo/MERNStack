@@ -10,15 +10,24 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    role: '1',
+    role: '',
   });
   const [registrationMessage, setRegistrationMessage] = useState('');
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.name === 'role') {
+      // If the changed field is 'role'
+      setFormData({
+        ...formData,
+        role: e.target.value // Update the role value
+      });
+    } else {
+      // For other fields, update as usual
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -94,6 +103,16 @@ const Register = () => {
                 name="password"
                 onChange={handleChange}
               />
+            </div>
+            <div className="appFormInputContainer">
+              <label htmlFor="role">Role</label>
+              <select name="role" onChange={handleChange}>
+                <option value="">Select Role</option>
+                <option value="1">Admin</option>
+                <option value="2">Shopper</option>
+                <option value="3">Supplier</option>
+                <option value="4">Courier</option>
+              </select>
             </div>
             <button type="submit" className="appBtn">
               <i className="fa fa-plus"></i> Create Account

@@ -1,126 +1,86 @@
-const { Pool } = require('pg');
-
 const pool = require('../db');
 
-// Add a new item
-    const addItem = async (req, res) => {
-      try {
-        const { name, price, image, quantity, description } = req.body;
-
-        const newItemQuery = await pool.query(
-          'INSERT INTO items (name, price, image, quantity, description) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-          [name, price, image, quantity, description]
-        );
-
-        const newItem = newItemQuery.rows[0];
-
-        res.status(201).json(newItem);
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
-    };
-
-// Delete an item by ID
-const deleteItem = async (req, res) => {
+// Retrieve all items
+async function getAllItems(req, res) {
   try {
-    const itemId = req.params.id;
-    const deletedItemQuery = await pool.query('DELETE FROM items WHERE id = $1 RETURNING *', [itemId]);
-    const deletedItem = deletedItemQuery.rows[0];
-
-    if (!deletedItem) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    res.json({ message: 'Item deleted successfully', deletedItem });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM store.items');
+    client.release();
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
 
-// Archive an item by ID
-const archiveItem = async (req, res) => {
+// Retrieve a single item by ID
+async function getItemById(req, res) {
+  const itemId = req.params.id;
   try {
-    const itemId = req.params.id;
-    const archivedItemQuery = await pool.query(
-      'UPDATE items SET is_archived = true WHERE id = $1 RETURNING *',
-      [itemId]
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM store.items WHERE id = $1', [itemId]);
+    client.release();
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+// Create a new item
+async function createItem(req, res) {
+  const { item_name, description, quantity, price, SupplierID, image } = req.body;
+  try {
+    const client = await pool.connect();
+    const result = await client.query(
+      'INSERT INTO store.items (item_name, description, quantity, price, SupplierID, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [item_name, description, quantity, price, SupplierID, image]
     );
-
-    const archivedItem = archivedItemQuery.rows[0];
-
-    if (!archivedItem) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    res.json({ message: 'Item archived successfully', archivedItem });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    client.release();
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
 
-// Get all non-archived items
-const getAllItems = async (req, res) => {
+// Update an existing item
+async function updateItem(req, res) {
+  const itemId = req.params.id;
+  const { item_name, description, quantity, price, SupplierID, image } = req.body;
   try {
-    const itemsQuery = await pool.query('SELECT * FROM items WHERE is_archived = false');
-    const items = itemsQuery.rows;
-
-    res.json(items);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
-
-// Get a single item by ID
-const getSingleItem = async (req, res) => {
-  try {
-    const itemId = req.params.id;
-    const itemQuery = await pool.query('SELECT * FROM items WHERE id = $1', [itemId]);
-    const item = itemQuery.rows[0];
-
-    if (!item) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    res.json(item);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
-
-// Update an item by ID
-const updateItem = async (req, res) => {
-  try {
-    const itemId = req.params.id;
-    const { name, price, image, quantity, description } = req.body;
-
-    const updatedItemQuery = await pool.query(
-      'UPDATE items SET name = $1, price = $2, image = $3, quantity = $4, description = $5 WHERE id = $6 RETURNING *',
-      [name, price, image, quantity, description, itemId]
+    const client = await pool.connect();
+    const result = await client.query(
+      'UPDATE store.items SET item_name = $1, description = $2, quantity = $3, price = $4, SupplierID = $5, image = $6 WHERE id = $7 RETURNING *',
+      [item_name, description, quantity, price, SupplierID, image, itemId]
     );
-
-    const updatedItem = updatedItemQuery.rows[0];
-
-    if (!updatedItem) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    res.json(updatedItem);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    client.release();
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
 
+// Delete an item
+async function deleteItem(req, res) {
+  const itemId = req.params.id;
+  try {
+    const client = await pool.connect();
+    await client.query('DELETE FROM store.items WHERE id = $1', [itemId]);
+    client.release();
+    res.json({ message: 'Item deleted successfully' });
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+// Export the functions individually
 module.exports = {
-  addItem,
-  deleteItem,
-  archiveItem,
   getAllItems,
-  getSingleItem,
+  getItemById,
+  createItem,
   updateItem,
+  deleteItem,
 };

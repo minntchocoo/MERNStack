@@ -1,6 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { Pool } = require('pg');
-
 const pool = require('../db');
 
 const secretKey = 'yourSecretKey'; // Replace with a strong, secret key
@@ -12,7 +10,7 @@ exports.login = async (req, res) => {
 
   try {
     // Find user by email
-    const query = 'SELECT * FROM users WHERE email = $1';
+    const query = 'SELECT * FROM store."User" WHERE email = $1';
     const result = await pool.query(query, [email]);
     const user = result.rows[0];
 

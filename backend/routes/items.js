@@ -1,12 +1,11 @@
 const express = require('express');
 const {
-  addItem,
-  deleteItem,
-  archiveItem, // Add this import for the archiveItem function
   getAllItems,
-  getSingleItem,
+  getItemById,
+  createItem,
   updateItem,
-} = require('../controllers/itemController');
+  deleteItem,
+} = require('../controllers/itemController'); // Adjusted import statement
 
 const router = express.Router();
 
@@ -14,16 +13,13 @@ const router = express.Router();
 router.get('/', getAllItems);
 
 // GET a single ITEM
-router.get('/:id', getSingleItem);
+router.get('/:id', getItemById);
 
 // POST a new ITEM
-router.post('/', addItem);
+router.post('/', createItem);
 
 // DELETE an ITEM
 router.delete('/:id', deleteItem);
-
-// Archive an ITEM (NEW)
-router.post('/archive/:id', archiveItem);
 
 // UPDATE an ITEM
 router.patch('/:id', updateItem);
