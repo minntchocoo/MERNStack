@@ -4,7 +4,7 @@ const pool = require('../db');
 async function getAllItems(req, res) {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM store.items');
+    const result = await client.query('SELECT * FROM store."Items"');
     client.release();
     res.json(result.rows);
   } catch (err) {
@@ -18,7 +18,7 @@ async function getItemById(req, res) {
   const itemId = req.params.id;
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM store.items WHERE id = $1', [itemId]);
+    const result = await client.query('SELECT * FROM store."Items" WHERE id = $1', [itemId]);
     client.release();
     res.json(result.rows[0]);
   } catch (err) {
@@ -33,7 +33,7 @@ async function createItem(req, res) {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'INSERT INTO store.items (item_name, description, quantity, price, SupplierID, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      'INSERT INTO store."Items" (item_name, description, quantity, price, SupplierID, image) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
       [item_name, description, quantity, price, SupplierID, image]
     );
     client.release();
@@ -51,7 +51,7 @@ async function updateItem(req, res) {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'UPDATE store.items SET item_name = $1, description = $2, quantity = $3, price = $4, SupplierID = $5, image = $6 WHERE id = $7 RETURNING *',
+      'UPDATE store."Items" SET item_name = $1, description = $2, quantity = $3, price = $4, SupplierID = $5, image = $6 WHERE id = $7 RETURNING *',
       [item_name, description, quantity, price, SupplierID, image, itemId]
     );
     client.release();
@@ -67,7 +67,7 @@ async function deleteItem(req, res) {
   const itemId = req.params.id;
   try {
     const client = await pool.connect();
-    await client.query('DELETE FROM store.items WHERE id = $1', [itemId]);
+    await client.query('DELETE FROM store."Items" WHERE id = $1', [itemId]);
     client.release();
     res.json({ message: 'Item deleted successfully' });
   } catch (err) {
