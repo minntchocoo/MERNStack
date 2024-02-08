@@ -9,6 +9,8 @@ import ProtectedRoute from './components/privateRoute'; // Corrected the compone
 import HomeUser from './pages/Home-user';
 import AdminView from './pages/Admin';
 import AdminList from './pages/A-ItemV';
+import SupplierView from './pages/supplier/supplierview';
+import CourierView from './pages/courier/courierview';
 
 function App() {
   return (
@@ -18,16 +20,34 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+
+          {/* Admin Routes */}
           <Route
               path="/admin"
-              element={<ProtectedRoute allowedRoles={['admin']}><AdminView /></ProtectedRoute>}
+              element={<ProtectedRoute allowedRoles={[1]}><AdminView /></ProtectedRoute>}
             />
           <Route
             path="/admin/list"
-            element={<ProtectedRoute allowedRoles={['admin']}><AdminList /></ProtectedRoute>}
+            element={<ProtectedRoute allowedRoles={[1]}><AdminList /></ProtectedRoute>}
           />
+          
+          
+          {/* Supplier Routes */}
+          <Route
+            path="/supplier"
+            element={<ProtectedRoute allowedRoles={[3]}><SupplierView /></ProtectedRoute>}
+          />
+
+
+          {/* Courier Routes */}
+          <Route
+            path="/courier"
+            element={<ProtectedRoute allowedRoles={[4]}><CourierView /></ProtectedRoute>}
+          />
+
         </Routes>
 
+        {/* Shopper Routes */}
         <CartProvider>
           <Routes>
             <Route
@@ -36,10 +56,11 @@ function App() {
             />
             <Route
               path="/home"
-              element={<ProtectedRoute allowedRoles={['user']}><HomeUser /></ProtectedRoute>}
+              element={<ProtectedRoute allowedRoles={[2]}><HomeUser /></ProtectedRoute>}
             />
           </Routes>
         </CartProvider>
+
       </Router>
     </div>
   );

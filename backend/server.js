@@ -37,7 +37,7 @@ app.post('/api/checkout', checkoutController.processCheckout);
       user: 'postgres',
       host: 'localhost',
       database: 'kpop',
-      password: '1234',
+      password: 'Tuskan32',
       port: 5432,
       schema: 'store',
     });

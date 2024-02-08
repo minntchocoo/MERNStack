@@ -9,7 +9,6 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
  useEffect(() => {
     // Check if a token exists in localStorage
     const token = localStorage.getItem('userToken');
-    console.log(token)
     if (!token) {
       navigate('/'); // Redirect to the login page if the token is missing
       return;
@@ -17,7 +16,7 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
 
     try {
       const decodedToken = jwtDecode(token);
-  
+      console.log(decodedToken, allowedRoles)
       // Check if the user's role is allowed to access this page
       if (!allowedRoles.includes(decodedToken.role)) {
         navigate('/unauthorized'); // Redirect to an unauthorized page
