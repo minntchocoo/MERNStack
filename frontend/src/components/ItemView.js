@@ -51,22 +51,6 @@ const ItemView = () => {
     }
   };
 
-  const handleDelete = async (itemId) => {
-    // Implement delete logic here
-    try {
-      const deleteResponse = await fetch(`http://localhost:4000/api/items/${itemId}`, {
-        method: 'DELETE',
-      });
-
-      if (deleteResponse.ok) {
-        setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
-      } else {
-        console.error('Error deleting item:', deleteResponse.status);
-      }
-    } catch (error) {
-      console.error('Error deleting item:', error);
-    }
-  };
 
   const handleArchive = async (itemId) => {
     // Implement archive logic here

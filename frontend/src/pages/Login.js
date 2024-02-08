@@ -39,26 +39,30 @@ const Login = () => {
       if (response.ok) {
         const decodedToken = jwtDecode(data.token);
         console.log(decodedToken);
-        if (decodedToken && decodedToken.role === 'admin') {
-          // Store the token in localStorage
-          localStorage.setItem('userToken', data.token);
-
+        if (decodedToken.role === 1) {
           setLoginStatus('Login successful');
-
-          // Redirect to the admin page or any other desired page
+      
+          // Redirect to the admin page
           navigate('/admin');
+        } else if (decodedToken.role === 3) {
+          setLoginStatus('Login successful');
+      
+          // Redirect to the supplier page
+          navigate('/supplier');
+        } else if (decodedToken.role === 4) {
+          setLoginStatus('Login successful');
+      
+          // Redirect to the courier page
+          navigate('/courier');
         } else {
-          localStorage.setItem('userToken', data.token);
-
-          // Handle the case where the user is not an admin
-          setLoginStatus('Login successful but not an admin');
-
-          // Redirect to a different page (e.g., home.js)
+          // Handle other roles here if needed
+          setLoginStatus('Login successful but not an admin, supplier, or courier');
           navigate('/home');
         }
       } else {
         setLoginStatus('Invalid credentials');
       }
+      
     } catch (error) {
       console.error('Error during login:', error);
       setLoginStatus('An error occurred during login');
