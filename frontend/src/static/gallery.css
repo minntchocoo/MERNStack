@@ -1,19 +1,25 @@
 .gallery-container {
+    
     display: flex;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
-    gap: 30px;
+    gap: 50px;
+    background-color: #8fcdef;
+    margin-block-start: -5px;
+    
   }
   
   .gallery-image {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+    margin-left: 20px;
+    width: 900px;
+    height: 900px;
+    object-fit:scale-down;
+
   }
   
   .center-image {
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
   }
   
   .button-container {
@@ -24,8 +30,8 @@
   
   .swipe-button {
     padding: 10px;
-    background: #91a8d0;
-    color: rgb(255, 223, 223);
+    background: #FFC567;
+    color: #796464;
     border: none;
     border-radius: 5px;
     cursor: pointer;

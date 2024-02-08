@@ -1,7 +1,8 @@
 h1#navbarh1 {
-    font-weight: 800;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #91a8d0;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFC567;
+    align-items: center;
 
 }
 
@@ -13,6 +14,10 @@ h1#navbarh1 {
   }
 .search-icon{
     margin-bottom: 10px;
+}
+
+.dgwt-wcas-preholder{
+  color: #532d3b;
 }
 
 /* Add this to your existing CSS file or create a new one */
@@ -37,8 +42,8 @@ h1#navbarh1 {
   }
   .link-container a{
     color: #ffffff; /* Subtle pink color */
-    background-color: rgb(131, 205, 107);
-    border: 2px #532d3b solid;
+    background-color: rgb(49, 116, 50);
+    border: 2px #d92869 solid;
     border-radius: 12px;
     padding: 10px;
     font-weight: 500;
@@ -53,5 +58,6 @@ h1#navbarh1 {
     text-decoration: #532d3b;
     color: #d45f8d; /* Darker pink on hover */
   }
+  
   
   /* Assuming you have a loginBtnStyle object with specific styles */

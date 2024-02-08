@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../static/home.css';
+
 // components
 import ItemList from '../components/itemlist';
 import ItemForm from '../components/ItemForm'

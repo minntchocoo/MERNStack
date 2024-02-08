@@ -9,13 +9,13 @@
 }
 
 body {
-  background: #f1f1f1;
+  background: #5726c9;
   margin: 0;
-  font-family: "Poppins";
+  font-family: fantasy;
 }
 
 header {
-  background: #fff;
+  background: #552CB7; /* NAVBAR */
   
 }
 /*ONLINE CROCHET ITEMS -> label*/
@@ -61,11 +61,11 @@ header a {
   border-radius: 30px;
   height: auto;
   font-family: Roboto, sans-serif;
-  background-color: #eee;
+  background-color: #feeae7;
 }
 
 .search-icon {
-  fill: #888;
+  fill: #a30238;
   position: absolute;
   left: 12px;
 }

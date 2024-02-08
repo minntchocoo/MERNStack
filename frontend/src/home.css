@@ -7,6 +7,7 @@
   
   .search-bar-container {
     position: relative;
+    
   }
   
   .dgwt-wcas-sf-wrapp input[type="search"].dgwt-wcas-search-input {
@@ -17,9 +18,11 @@
     border-radius: 30px;
     height: 24px;
     font-family: Roboto, sans-serif;
-    background-color: #eee;
+    background-color: #68fdc4cf;
+    color: black;
   }
   .dgwt-wcas-sf-wrap {
     margin-bottom:10px; 
+    
   }
   

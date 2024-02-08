@@ -4,6 +4,7 @@
 .item-list-container {
     max-width: 1200px; /* Smaller max-width */
     margin: 0 auto; /* Center the container horizontally */
+
   }
   
   /* Slick carousel styles */
@@ -56,7 +57,7 @@
   
   .item {
     box-sizing: border-box;
-    border: 2.5px solid #41588b;
+    border: 2.5px solid #010202;
     padding: 15px;
     width: 300px;
     text-align: center; /* Center text horizontally */
@@ -73,7 +74,7 @@
   
   p#pr {
     margin: 0;
-    color: #78c743;
+    color: rgb(67, 101, 56);
   }
   p#n {
     color: #101111;

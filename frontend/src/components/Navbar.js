@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom'
 import "../static/navbar.css"
 
 
+
 const Navbar = () => {
   const registerBtnStyle = {
-    backgroundColor:'#56ae57',
-    color: '#fff',
-    padding: '4px 20px',
+    
+    backgroundColor:'#FD5A46',
+    color: '#68fdc4cf',
+    fontFamily: 'Archivo Black, sans-serif',
+    padding: '10px 20px',
     borderRadius: '4px',
     textDecoration: 'none',
     fontWeight: 'bold',
@@ -15,14 +18,15 @@ const Navbar = () => {
    
   };
   const loginBtnStyle = {
-    backgroundColor:'#532d3b',
-    color: '#fff',
-    padding: '4px 20px',
+    backgroundColor:'#FFC567',
+    color: '#261f1f',
+    fontFamily: 'Archivo Black, sans-serif',
+    padding: '10px 20px',
     borderRadius: '4px',
     textDecoration: 'none',
     fontWeight: 'bold',
-    right:'8px',
-    position:'absolute'
+    right:'4px',
+    position:'absolute',
    
   };
 
@@ -36,6 +40,7 @@ const Navbar = () => {
         </div>
         <div className="navbar">
           {/* Other navbar content */}
+          
           <Link to="/register" style={registerBtnStyle}>
             Register
             </Link>
@@ -65,7 +70,7 @@ const Navbar = () => {
               value=""
               placeholder=" ENHYPEN"
               autoComplete="off"
-              style={{ paddingLeft: '45px', marginBottom: '10px',}}
+              style={{ paddingLeft: '45px', marginBottom: '10px', color: '#fff'}}
             
               
             />
