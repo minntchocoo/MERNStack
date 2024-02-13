@@ -42,19 +42,29 @@ const Login = () => {
         if (decodedToken.role === 1) {
           setLoginStatus('Login successful');
       
+          // Replace the user token in localStorage
+          localStorage.setItem('userToken', data.token);
+      
           // Redirect to the admin page
           navigate('/admin');
         } else if (decodedToken.role === 3) {
           setLoginStatus('Login successful');
+          console.log("role", decodedToken.role);
+      
+          // Replace the user token in localStorage
+          localStorage.setItem('userToken', data.token);
       
           // Redirect to the supplier page
           navigate('/supplier');
         } else if (decodedToken.role === 4) {
           setLoginStatus('Login successful');
       
+          // Replace the user token in localStorage
+          localStorage.setItem('userToken', data.token);
+      
           // Redirect to the courier page
           navigate('/courier');
-        } else {
+        } else if (decodedToken.role === 2) {
           // Handle other roles here if needed
           setLoginStatus('Login successful but not an admin, supplier, or courier');
           navigate('/home');
@@ -67,7 +77,7 @@ const Login = () => {
       console.error('Error during login:', error);
       setLoginStatus('An error occurred during login');
     }
-
+  
   };
   
   return (

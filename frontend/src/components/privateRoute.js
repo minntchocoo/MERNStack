@@ -16,7 +16,7 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
 
     try {
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken, allowedRoles)
+      console.log('role', decodedToken.role, allowedRoles)
       // Check if the user's role is allowed to access this page
       if (!allowedRoles.includes(decodedToken.role)) {
         navigate('/unauthorized'); // Redirect to an unauthorized page
