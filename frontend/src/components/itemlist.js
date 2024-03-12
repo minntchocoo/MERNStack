@@ -40,9 +40,9 @@ const ItemList = () => {
           {items.map((item) => (
             <div key={item._id} className="item">
               <Link to={`/product/${item.id}`}>
-                <h3 id='n'>{item.name}</h3>
+                <h3 id='n'>{item.item_name}</h3>
                 <p id='pr'>Price: ${item.price}</p>
-                <img src={item.image} alt={item.name} className="item-image" />
+                <img src={item.image} alt={item.item_name} className="item-image" />
                 <p id='n'>Quantity: {item.quantity}</p>
                 {item.description && <p id='n'>Description: {item.description}</p>}
               </Link>

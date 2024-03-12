@@ -36,12 +36,28 @@ const AdminView = () => {
     <div>
       <NavbarA />
       <h1 id='e'>Menu</h1>
-      <div className="card">
-        <h2>Item Stats</h2>
-        <p>Total Items: {items.length}</p>
-        <p>Total Quantity: {totalQuantity}</p>
-        <p>Total Projected Income: ${totalProjectedIncome.toFixed(2)}</p>
-        <Link to="/admin/list">Go to Admin List</Link>  
+      <div className="card-div-container">
+        <div className="card">
+          <h2>Item Stats</h2>
+          <p>Total Items: {items.length}</p>
+          <p>Total Quantity: {totalQuantity}</p>
+          <p>Total Projected Income: ${totalProjectedIncome.toFixed(2)}</p>
+          <Link to="/admin/list">Go to Admin List</Link>  
+        </div>
+        <div className="card">
+          <h2>Pasabay Request</h2>
+          <p>Total Pasabay Request: 100 </p>
+          <p>To be Verified: 20 </p>
+          <p>Total Verified: 80 </p>
+          <Link to="/admin/prequest">Manage Pasabay Request</Link>  
+        </div>
+        <div className="card">
+          <h2>User Content</h2>
+          <p>Total User Content: 100 </p>
+          <p>To be Verified: 20 </p>
+          <p>Total Verified: 80 </p>
+          <Link to="/admin/user-content ">Manage User Content</Link>  
+        </div>
       </div>
     </div>
   );

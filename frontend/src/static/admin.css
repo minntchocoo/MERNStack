@@ -1,190 +1,211 @@
-h1#e{
-  color: #058CD7;
+:root {
+  --peony: #f9a3ae;
+  --muted-grey: #B9B2AA;
+  --sea-salt: #CDD2CA;
+  --matte-black: #28282B;
+  --blossom: #f47992; /* Assuming this is a mistake, as it duplicates matte black */
+}
+
+
+h1#e {
+  color: var(--matte-black);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  justify-content:  center ;
+  justify-content: center;
   margin-left: 40px;
   margin-top: 10px;
   margin-bottom: 8px;
 }
 
 .form-container {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #b93b3b;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .form-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  
-  .form-button {
-    background-color: #2ecc71;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .form-button:hover {
-    background-color: #27ae60;
-  }
-  
-  /* Optional: Style for the form when it's in a flex container */
-  body {
-   
-    align-items: center;
-    margin: 0;
-    width: auto;
-  }
-  
-  /* Optional: Add more styling for better aesthetics */
-  .item-list-container {
-    margin: 20px;
-  }
-  
-  .item-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .item-list-table th, .item-list-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    height: 80px;
-  }
-  
-  .item-list-table th {
-    background-color: #f2f2f2;
-    height: 30px;
-  }
-  
-  .item-list-actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .item-list-update-btn,
-  .item-list-delete-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 35px;
-    margin-top: 20px;
-  }
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: var(--matte-black);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .item-list-delete-btn {
-    background-color: pink !important;
-  }
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--peony); /* Using variable for color */
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  .item-list-delete-btn:hover {
-    background-color: violet !important;
-  }
-  
-  .item-list-update-btn:hover{
-    background-color: #2d80b8;
-  }
-  .item-list-delete-btn:hover {
-    background-color: rgb(170, 140, 100);
-  }
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid var(--peony);
+  border-radius: 4px;
+}
 
-  .item-list-delete-btn{
-    background-color: burlywood;
-  }
-  
-  /* Optional: Style for the modal */
-  /* You can add more specific styling for the modal based on your requirements */
-  /*  CSS FOR MODAL */
-  /* modal.css */
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid var(--blossom);
+  border-radius: 4px;
+  resize: vertical;
+} 
 
-  .custom-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(105, 122, 219, 0.817);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Set a maximum width */
-    box-sizing: border-box;
-    border: 1px solid #a02725;  
-    height: auto;
-    text-align: center;
-  }
+.form-button {
+  background-color: var(--blossom);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-button:hover {
+  background-color: var(--peony);
+}
+
+/* Optional: Style for the form when it's in a flex container */
+body {
+  align-items: center;
+  margin: 0;
+  width: auto;
+}
+
+/* Optional: Add more styling for better aesthetics */
+.item-list-container {
+  margin: 20px;
+}
+
+.item-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.item-list-table th,
+.item-list-table td {
+  border: 1px solid var(--blossom);
+  padding: 8px;
+  text-align: left;
+  height: 80px;
+
+}
+
+.item-list-table th {
+  background-color: var(--sea-salt);
+  color: var(--blossom);
+  height: 30px;
+}
+
+.item-list-actions {
+  display: flex;
+}
+
+.item-list-update-btn,
+.item-list-delete-btn {
+  background-color: var(--blossom);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 35px;
+  margin-top: 20px;
+}
+
+.item-list-delete-btn {
+  background-color: var(--blossom) !important;
+}
+
+.item-list-delete-btn:hover {
+  background-color: var(--peony) !important;
+}
+
+.item-list-update-btn:hover {
+  background-color: (var(--blossom));
+}
+
+.item-list-delete-btn:hover {
+  background-color: var(--peony);
+}
+
+.item-list-delete-btn {
+  background-color: var(--blossom);
+}
+
+/* Optional: Style for the modal */
+/* You can add more specific styling for the modal based on your requirements */
+/* CSS FOR MODAL */
+/* modal.css */
+
+.custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(105, 122, 219, 0.817);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Set a maximum width */
+  box-sizing: border-box;
+  border: 1px solid var(--blossom);
+  height: auto;
+  text-align: center;
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  color: var(--matte-black);
+}
+
+.modal-label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left !important;
+  font-weight: bold;
+}
+
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.modal-btn {
+  background-color: var(--blossom);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
+button#dbutton.modal-btn {
+  background-color: var(--blossom);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
 
 
-  .modal-title {
-    margin-bottom: 20px;
-    color: brown;
-  }
+.modal-btn:last-child {
+  background-color: #cd5c5c;
+}
 
-  .modal-label {
-    display: block;
-    margin-bottom: 8px;
-    text-align:left !important;
-    font-weight: bold;
-  }
+/* Optional: Add more styles as needed */
 
-  .modal-input,
-  .modal-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-  }
-
-  .modal-btn {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-
-  .modal-btn:last-child {
-    background-color: #cd5c5c;
-  }
-
-  /* Optional: Add more styles as needed */
-
-    /* admin.css */
+/* admin.css */
 
 .card {
   background-color: #fff;
@@ -195,6 +216,8 @@ h1#e{
   margin: 20px;
   max-width: 400px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .card h2 {
@@ -206,6 +229,164 @@ h1#e{
   margin: 10px 0;
 }
 
-h2{
-  color: #532d3b;
+.card-div-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+h2 {
+  color: var(--matte-black);
+  margin-left: 20px;
+}
+
+
+/* Pasabay Request View */
+
+.request-list-container {
+  margin: 20px;
+}
+
+.request-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.request-list-table th,
+.request-list-table td {
+  border: 1px solid var(--blossom);
+  padding: 8px;
+  text-align: left;
+  height: 80px;
+}
+
+.request-list-table th {
+  background-color: var(--sea-salt);
+  color: var(--blossom);
+  height: 30px;
+}
+
+.request-list-actions {
+  display: flex;
+}
+
+.request-list-verify-btn,
+.request-list-deny-btn {
+  background-color: var(--blossom);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 35px;
+  margin-top: 20px;
+}
+
+.request-list-verify-btn {
+  background-color: var(--blossom) !important;
+}
+
+.request-list-verify-btn:hover {
+  background-color: var(--peony) !important;
+}
+
+.request-list-deny-btn:hover {
+  background-color: var(--blossom);
+}
+
+.request-list-deny-btn:hover {
+  background-color: var(--peony);
+}
+
+.request-list-deny-btn {
+  background-color: var(--blossom);
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  background-color: var(--sea-salt);
+  color: var(--blossom);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filter-buttons button.active {
+  background-color: var(--blossom);
+  color: white;
+}
+
+
+.request-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.request-card {
+  width: 300px;
+  border: 1px solid var(--blossom);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.request-card-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.request-card-content {
+  margin-top: 16px;
+}
+
+.request-card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.request-list-verify-btn,
+.request-list-deny-btn {
+  background-color: var(--blossom);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 35px;
+  width: 48%;
+  font-size: 14px;
+}
+
+.request-list-verify-btn:hover,
+.request-list-deny-btn:hover {
+  background-color: var(--peony);
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.filter-buttons button {
+  background-color: var(--sea-salt);
+  color: var(--blossom);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filter-buttons button.active {
+  background-color: var(--blossom);
+  color: white;
 }

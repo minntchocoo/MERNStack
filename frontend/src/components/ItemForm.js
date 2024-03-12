@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 
 const ItemForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    item_name: '',
     price: '',
     image: '',
     quantity: 0,
     description: '',
+    supplierID: '',
   });
 
   const handleChange = (e) => {
@@ -51,7 +52,7 @@ const ItemForm = () => {
       <h2>Add Items</h2>
        <form class="form-container" onSubmit={handleSubmit}>
         <label class="form-label">Name:</label>
-        <input type="text" class="form-input" name="name" value={formData.name} onChange={handleChange} required />
+        <input type="text" class="form-input" name="item_name" value={formData.item_name} onChange={handleChange} required />
 
         <label class="form-label">Price:</label>
         <input type="text" class="form-input" name="price" value={formData.price} onChange={handleChange} required />

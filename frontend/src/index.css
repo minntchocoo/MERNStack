@@ -1,6 +1,16 @@
 /* GOOGLE FONT*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
+:root {
+  --peony: #f9a3ae;
+  --muted-grey: #B9B2AA;
+  --sea-salt: #CDD2CA;
+  --matte-black: #28282B;
+  --blossom: #f47992; /* Assuming this is a mistake, as it duplicates matte black */
+}
+
+
+
 /* LAYOUT */
 :root {
   --primary: #73b86a ;
@@ -15,7 +25,8 @@ body {
 }
 
 header {
-  background: #552CB7; /* NAVBAR */
+  background: var(--matte-black); /* NAVBAR */
+  padding-bottom: 1rem;
   
 }
 /*ONLINE CROCHET ITEMS -> label*/

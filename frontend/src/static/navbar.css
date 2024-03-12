@@ -1,7 +1,18 @@
+:root {
+  --peony: #f9a3ae;
+  --muted-grey: #B9B2AA;
+  --sea-salt: #CDD2CA;
+  --matte-black: #28282B;
+  --blossom: #f47992; /* Assuming this is a mistake, as it duplicates matte black */
+}
+
+
+
+
 h1#navbarh1 {
     font-weight: 900;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #FFC567;
+    color: var(--blossom) ;
     align-items: center;
 
 }
@@ -30,7 +41,7 @@ h1#navbarh1 {
   
   .link-container a#link {
     color: #ffffff; /* Subtle pink color */
-    background-color: #532d3b;
+    background-color: var(--blossom);
     border: 2px #532d3b solid;
     border-radius: 12px;
     padding: 10px;
@@ -42,7 +53,7 @@ h1#navbarh1 {
   }
   .link-container a{
     color: #ffffff; /* Subtle pink color */
-    background-color: rgb(49, 116, 50);
+    background-color:var(--blossom);
     border: 2px #d92869 solid;
     border-radius: 12px;
     padding: 10px;
@@ -54,8 +65,9 @@ h1#navbarh1 {
 
   }
   
-  .link-container a:hover {
-    text-decoration: #532d3b;
+  .link-container a:hover,
+  .link-container a#link:hover {
+    background-color: var(--peony);
     color: #d45f8d; /* Darker pink on hover */
   }
   
