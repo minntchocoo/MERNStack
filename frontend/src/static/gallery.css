@@ -1,22 +1,49 @@
-.gallery-container {
-    
-    display: flex;
-    max-width: 1300px;
-    margin: auto;
-    gap: 50px;
-    background-color: #8fcdef;
-    margin-block-start: -5px;
-    
-  }
-  
-  .gallery-image {
-    margin-left: 20px;
-    width: 900px;
-    height: 900px;
-    object-fit:scale-down;
+:root {
+  --peony: #f9a3ae;
+  --muted-grey: #B9B2AA;
+  --sea-salt: #CDD2CA;
+  --matte-black: #28282B;
+  --blossom: #f47992; /* Assuming this is a mistake, as it duplicates matte black */
+}
 
-  }
-  
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Set the height of the container */
+  overflow: hidden; /* Hide overflow */
+}
+
+.image-container {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.get-started-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: var(--matte-black);
+  color: var(--peony);
+  font-weight: bold;
+  border: 1px solid var(--matte-black);
+  border-radius: 8px;
+  outline-color: var(--blossom);
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+.gallery-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Fill the container */
+}
+
   .center-image {
     width: 700px;
     height: 700px;

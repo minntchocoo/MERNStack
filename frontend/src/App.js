@@ -12,6 +12,8 @@ import AdminList from './pages/A-ItemV';
 import SupplierView from './pages/supplier/supplierview';
 import CourierView from './pages/courier/courierview';
 import PrequestView from './pages/admin/admin-preq';
+import UserContentView from './pages/admin/admin-user-content';
+import AccountView from './pages/admin/admin-account';
 
 function App() {
   return (
@@ -37,8 +39,13 @@ function App() {
           />
           <Route
             path="/admin/user-content"
-            element={<ProtectedRoute allowedRoles={[1]}><AdminList /></ProtectedRoute>}
+            element={<ProtectedRoute allowedRoles={[1]}><UserContentView /></ProtectedRoute>}
           />
+
+          <Route
+            path="/admin/account"
+            element={<ProtectedRoute allowedRoles={[1]}><AccountView /></ProtectedRoute>}
+          />    
           
           
           {/* Supplier Routes */}

@@ -26,16 +26,13 @@ body {
 
 header {
   background: var(--matte-black); /* NAVBAR */
-  padding-bottom: 1rem;
   
 }
 /*ONLINE CROCHET ITEMS -> label*/
 header .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 20px;
   text-align: center;
-  height: 80px;
 }
 
 header a {

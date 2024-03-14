@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
-import '../static/gallery.css'
+import '../static/gallery.css';
 
 const SwipeableGallery = ({ images }) => {
- 
   const [centerIndex, setCenterIndex] = useState(0);
 
   const handleSwipe = (deltaX) => {
-    // Calculate the new center index based on the current center index and the swipe direction
     const newCenterIndex = (centerIndex + deltaX + images.length) % images.length;
-
-    // Set the new center index
     setCenterIndex(newCenterIndex);
   };
 
@@ -28,16 +24,22 @@ const SwipeableGallery = ({ images }) => {
   };
 
   const renderedImages = images.map((image, index) => (
-    <img
+    <div
       key={index}
-      src={image}
-      alt={`Image ${index + 1}`}
+      className="image-container"
       style={{
-        width: index === centerIndex ? '500px' : '300px', // Center image has larger width
-        height: index === centerIndex ? '500px' : '300px', // Center image has larger height
-        objectFit: 'cover',
+        display: index === centerIndex ? 'flex' : 'none', // Show only the center image
       }}
-    />
+    >
+      <img
+        src={image}
+        alt={`Image ${index + 1}`}
+        className="gallery-image"
+      />
+      {index === centerIndex && ( // Show button only for the center image
+        <button className="get-started-button">Get Started</button>
+      )}
+    </div>
   ));
 
   return (
@@ -46,10 +48,10 @@ const SwipeableGallery = ({ images }) => {
         {renderedImages}
       </div>
       <div className="button-container">
-        <button  onClick={handleSwipeLeft} className="swipe-button">
+        <button onClick={handleSwipeLeft} className="swipe-button">
           Swipe Left
         </button>
-        <button  onClick={handleSwipeRight} className="swipe-button">
+        <button onClick={handleSwipeRight} className="swipe-button">
           Swipe Right
         </button>
       </div>
@@ -57,7 +59,6 @@ const SwipeableGallery = ({ images }) => {
   );
 };
 
-// Updated sample images with placeholder URLs
 const sampleImages = [
   '/heaven.jpg',
   '/bc.png',
