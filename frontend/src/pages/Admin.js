@@ -3,6 +3,7 @@ import NavbarA from '../components/Navbar-A';
 import { Link } from 'react-router-dom';
 
 import '../static/admin.css';
+import ItemView from '../components/ItemView';
 
 const sampleOrders = [
   {
@@ -87,7 +88,9 @@ const AdminView = () => {
           <p>Total Category: {sampleItems.length}</p>
           <Link to="/admin/category">Manage Items</Link>
         </div>
+      
       </div>
+      <ItemView />
     </div>
   );
 };
