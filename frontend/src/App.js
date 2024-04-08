@@ -11,9 +11,10 @@ import AdminView from './pages/Admin';
 import AdminList from './pages/A-ItemV';
 import SupplierView from './pages/supplier/supplierview';
 import CourierView from './pages/courier/courierview';
-import PrequestView from './pages/admin/admin-preq';
 import UserContentView from './pages/admin/admin-user-content';
 import AccountView from './pages/admin/admin-account';
+import ManageOrderView from './pages/admin/admin-preq';
+import ManageCategoryPage from './pages/admin/manageCategoryPage';
 
 function App() {
   return (
@@ -34,19 +35,21 @@ function App() {
             element={<ProtectedRoute allowedRoles={[1]}><AdminList /></ProtectedRoute>}
           />
           <Route
-            path="/admin/prequest"
-            element={<ProtectedRoute allowedRoles={[1]}><PrequestView /></ProtectedRoute>}
+            path="/admin/order"
+            element={<ProtectedRoute allowedRoles={[1]}><ManageOrderView /></ProtectedRoute>}
           />
-          <Route
-            path="/admin/user-content"
-            element={<ProtectedRoute allowedRoles={[1]}><UserContentView /></ProtectedRoute>}
-          />
+    
 
           <Route
             path="/admin/account"
             element={<ProtectedRoute allowedRoles={[1]}><AccountView /></ProtectedRoute>}
           />    
           
+          <Route
+            path="/admin/category"
+            element={<ProtectedRoute allowedRoles={[1]}><ManageCategoryPage /></ProtectedRoute>}
+          />    
+
           
           {/* Supplier Routes */}
           <Route

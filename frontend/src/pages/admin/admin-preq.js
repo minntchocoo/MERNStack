@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import NavbarA from '../../components/Navbar-A';
 
-const sampleRequests = [
+const sampleOrders = [
   {
     id: 1,
-    description: 'Request 1 description',
+    description: 'Order 1 description',
     customer_id: 101,
     date: '2024-03-15',
     product_name: 'Product 1',
@@ -13,39 +13,44 @@ const sampleRequests = [
   },
   {
     id: 2,
-    description: 'Request 2 description',
+    description: 'Order 2 description',
     customer_id: 102,
     date: '2024-03-16',
     product_name: 'Product 2',
     image: 'https://example.com/image2.jpg',
     status: 'Approved',
   },
-  // Add more sample requests as needed
+  // Add more sample orders as needed
 ];
 
-const PrequestView = () => {
-  const [requests, setRequests] = useState(sampleRequests);
-  const [filteredRequests, setFilteredRequests] = useState([]);
+const ManageOrderView = () => {
+  const [orders, setOrders] = useState(sampleOrders);
+  const [filteredOrders, setFilteredOrders] = useState([]);
   const [filter, setFilter] = useState('all'); // 'all', 'pending', 'approved'
 
   useEffect(() => {
-    // Initially set filtered requests to all requests
-    setFilteredRequests(requests);
-  }, [requests]);
+    // Initially set filtered orders to all orders
+    setFilteredOrders(orders);
+  }, [orders]);
 
   // Function to handle action button click
   const handleActionClick = (id) => {
     // Handle action button click
-    console.log(`Action button clicked for request with id: ${id}`);
+    console.log(`Action button clicked for order with id: ${id}`);
   };
-
-  // Function to filter requests based on status
-  const filterRequests = (status) => {
+  // Function to handle archiving an order
+  const handleArchiveOrder = (id) => {
+    // Filter out the archived order
+    const updatedOrders = orders.filter((order) => order.id !== id);
+    setOrders(updatedOrders);
+  };
+  // Function to filter orders based on status
+  const filterOrders = (status) => {
     if (status === 'all') {
-      setFilteredRequests(requests);
+      setFilteredOrders(orders);
     } else {
-      const filtered = requests.filter((request) => request.status === status);
-      setFilteredRequests(filtered);
+      const filtered = orders.filter((order) => order.status === status);
+      setFilteredOrders(filtered);
     }
     setFilter(status);
   };
@@ -55,21 +60,22 @@ const PrequestView = () => {
       <NavbarA />
       <div className="content-container">
         <div className="filter-buttons">
-          <button onClick={() => filterRequests('all')} className={filter === 'all' ? 'active' : ''}>All</button>
-          <button onClick={() => filterRequests('Pending')} className={filter === 'Pending' ? 'active' : ''}>Pending</button>
-          <button onClick={() => filterRequests('Approved')} className={filter === 'Approved' ? 'active' : ''}>Approved</button>
+          <button onClick={() => filterOrders('all')} className={filter === 'all' ? 'active' : ''}>All</button>
+          <button onClick={() => filterOrders('Pending')} className={filter === 'Pending' ? 'active' : ''}>Pending</button>
+          <button onClick={() => filterOrders('Approved')} className={filter === 'Approved' ? 'active' : ''}>Approved</button>
         </div>
-        <div className="request-list-container">
-          {filteredRequests.map((request) => (
-            <div key={request.id} className="request-card">
-              <img src={request.image} alt="Product" className="request-card-image" />
-              <div className="request-card-content">
-                <h3>{request.product_name}</h3>
-                <p>{request.description}</p>
-                <p>Status: {request.status}</p>
-                <div className="request-card-actions">
-                  <button className="request-list-verify-btn" onClick={() => handleActionClick(request.id)}>Verify</button>
-                  <button className="request-list-deny-btn" onClick={() => handleActionClick(request.id)}>Deny</button>
+        <div className="order-list-container">
+          {filteredOrders.map((order) => (
+            <div key={order.id} className="order-card">
+              <img src={order.image} alt="Product" className="order-card-image" />
+              <div className="order-card-content">
+                <h3>{order.product_name}</h3>
+                <p>{order.description}</p>
+                <p>Status: {order.status}</p>
+                <div className="order-card-actions">
+                  <button className="order-list-verify-btn" onClick={() => handleActionClick(order.id)}>Verify</button>
+                  <button className="order-list-deny-btn" onClick={() => handleActionClick(order.id)}>Deny</button>
+                  <button className="order-list-deny-btn" onClick={() => handleArchiveOrder(order.id)}>Archive</button>
                 </div>
               </div>
             </div>
@@ -80,4 +86,4 @@ const PrequestView = () => {
   );
 };
 
-export default PrequestView;
+export default ManageOrderView;

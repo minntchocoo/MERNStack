@@ -100,12 +100,12 @@ const ItemView = () => {
         <tbody>
           {items.map((item) => (
             <tr className="item-list-row" key={item.id}>
-              <td className="item-list-name">{item.name}</td>
+              <td className="item-list-name">{item.item_name}</td>
               <td className="item-list-price">${item.price}</td>
               <td className="item-list-quantity">{item.quantity}</td>
               <td className="item-list-actions">
                 <button className="item-list-update-btn" onClick={() => handleUpdateModalOpen(item._id)}>Update</button>
-                <button id='a' className="item-list-delete-btn" onClick={() => handleArchive(item._id)}>Archive</button>
+                <button id='a' className="item-list-delete-btn" onClick={() => handleArchive(item._id)}>Change Visibility</button>
               </td>
             </tr>
           ))}

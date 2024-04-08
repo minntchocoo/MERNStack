@@ -1,0 +1,48 @@
+
+.account-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.account-card {
+  width: 300px;
+  border: 1px solid var(--blossom);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-card-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.account-card-content {
+  margin-top: 16px;
+}
+
+.account-card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.account-list-verify-btn,
+.account-list-deny-btn {
+  background-color: var(--blossom);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 35px;
+  width: 48%;
+  font-size: 14px;
+}
+
+.account-list-verify-btn:hover,
+.account-list-deny-btn:hover {
+  background-color: var(--peony);
+}

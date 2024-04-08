@@ -1,5 +1,4 @@
-// ItemForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ItemForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +8,43 @@ const ItemForm = () => {
     quantity: 0,
     description: '',
     supplierID: '',
+    category: '',
   });
+  const [availableItems, setAvailableItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetchAvailableItems();
+    fetchCategories();
+  }, []);
+
+  const fetchAvailableItems = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/items');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableItems(data);
+      } else {
+        console.error('Failed to fetch available items:', response.status);
+      }
+    } catch (error) {
+      console.error('Failed to fetch available items:', error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/categories');
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data);
+      } else {
+        console.error('Failed to fetch categories:', response.status);
+      }
+    } catch (error) {
+      console.error('Failed to fetch categories:', error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,8 +64,7 @@ const ItemForm = () => {
 
       if (response.ok) {
         // Item added successfully
-        // You can add a callback function to handle success or navigate to a different page
-        handleSuccessCallback(response);
+        console.log('Item added successfully!');
         window.location.reload();
       } else {
         // Handle error
@@ -40,37 +74,37 @@ const ItemForm = () => {
       console.error('Error creating item:', error);
     }
   };
-  const handleSuccessCallback = (response) => {
-    // Your success handling logic here
-    console.log('Item added successfully!');
-    // Optionally, you can navigate to a different page
-    // navigate('/success-page');
-  };
 
   return (
     <div className='item-list-container'>
       <h2>Add Items</h2>
-       <form class="form-container" onSubmit={handleSubmit}>
-        <label class="form-label">Name:</label>
-        <input type="text" class="form-input" name="item_name" value={formData.item_name} onChange={handleChange} required />
+      <form className="form-container" onSubmit={handleSubmit}>
+        <label className="form-label">Select Item:</label>
+        <select className="form-input" name="item_name" value={formData.item_name} onChange={handleChange} required>
+          <option value="">Select an item</option>
+          {availableItems.map((item) => (
+            <option key={item.id} value={item.name}>{item.name}</option>
+          ))}
+        </select>
 
-        <label class="form-label">Price:</label>
-        <input type="text" class="form-input" name="price" value={formData.price} onChange={handleChange} required />
+        <label className="form-label">Category:</label>
+        <select className="form-input" name="category" value={formData.category} onChange={handleChange} required>
+          <option value="">Select a category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.name}>{category.name}</option>
+          ))}
+        </select>
 
-        <label class="form-label">Image URL:</label>
-        <input type="text" class="form-input" name="image" value={formData.image} onChange={handleChange} required />
+        <label className="form-label">Price:</label>
+        <input type="text" className="form-input" name="price" value={formData.price} onChange={handleChange} required />
 
-        <label class="form-label">Quantity:</label>
-        <input type="number" class="form-input" name="quantity" value={formData.quantity} onChange={handleChange} />
+        <label className="form-label">Quantity:</label>
+        <input type="number" className="form-input" name="quantity" value={formData.quantity} onChange={handleChange} />
 
-        <label class="form-label">Description:</label>
-        <textarea class="form-textarea" name="description" value={formData.description} onChange={handleChange}></textarea>
 
-        <button type="submit" class="form-button">Add Item</button>
+        <button type="submit" className="form-button">Add Item</button>
       </form>
     </div>
-   
-
   );
 };
 

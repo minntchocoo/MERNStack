@@ -7,7 +7,7 @@ const NavbarA = () => {
     return (
       <header className='adminheader'>
         <div className="container">
-          <Link to="/">
+          <Link to="/admin">
             <h1 id='navbarh1'> KPOP ONLINE STORE </h1>
           </Link>
           <div className='link-container'> 
