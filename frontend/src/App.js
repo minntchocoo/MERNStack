@@ -10,11 +10,11 @@ import HomeUser from './pages/Home-user';
 import AdminView from './pages/Admin';
 import AdminList from './pages/A-ItemV';
 import SupplierView from './pages/supplier/supplierview';
-import CourierView from './pages/courier/courierview';
-import UserContentView from './pages/admin/admin-user-content';
 import AccountView from './pages/admin/admin-account';
 import ManageOrderView from './pages/admin/admin-preq';
 import ManageCategoryPage from './pages/admin/manageCategoryPage';
+import VerifierView from './pages/verifier/verifierview';
+import ManageInventorySupplier from './pages/supplier/ManageInventory';
 
 function App() {
   return (
@@ -56,12 +56,16 @@ function App() {
             path="/supplier"
             element={<ProtectedRoute allowedRoles={[3]}><SupplierView /></ProtectedRoute>}
           />
+           <Route
+            path="/supplier/inventory"
+            element={<ProtectedRoute allowedRoles={[3]}><ManageInventorySupplier /></ProtectedRoute>}
+          />
 
 
-          {/* Courier Routes */}
+          {/* Verifier Routes */}
           <Route
-            path="/courier"
-            element={<ProtectedRoute allowedRoles={[4]}><CourierView /></ProtectedRoute>}
+            path="/verifier"
+            element={<ProtectedRoute allowedRoles={[4]}><VerifierView /></ProtectedRoute>}
           />
 
         </Routes>

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../static/courier.css';
+import '../../static/verifier.css';
 
-const CourierView = () => {
+const VerifierView = () => {
   return (
     <div>
       <h1>Courier View</h1>
@@ -11,4 +11,4 @@ const CourierView = () => {
   );
 };
 
-export default CourierView;
+export default VerifierView;

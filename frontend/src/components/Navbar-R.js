@@ -15,7 +15,8 @@ const NavbarR = () => {
           {/* Other navbar content */}
          
         </div>
-        
+        <br></br>
+        <br></br>
       </header>
     );
 };
